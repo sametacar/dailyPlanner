@@ -1,0 +1,68 @@
+/* Delete Confirmation */
+"delete.confirmation.title" = "Sind Sie sicher, dass Sie \"%@\" löschen möchten?";
+"delete.button.cancel" = "Abbrechen";
+"delete.button.delete" = "Löschen";
+
+/* Empty State */
+"tasks.empty.message" = "Tippen Sie auf das + Symbol, um eine Aufgabe zu erstellen";
+
+/* Copy Yesterday's Plan */
+"copyplan.empty.title" = "Kein Plan zum Kopieren";
+"copyplan.empty.message" = "Für gestern ist kein Plan gespeichert.";
+"copyplan.button.ok" = "OK";
+"copyplan.overwrite.title" = "Heutigen Plan überschreiben?";
+"copyplan.overwrite.message" = "Für heute existiert bereits ein Plan. Möchten Sie ihn löschen und stattdessen den Plan von gestern kopieren?";
+"copyplan.button.overwrite" = "Kopieren";
+
+/* Task Add Sheet */
+"taskadd.title" = "Aufgabe hinzufügen";
+"taskadd.section.details" = "Aufgabendetails";
+"taskadd.section.appearance" = "Aussehen";
+"taskadd.field.name" = "Aufgabenname";
+"taskadd.field.icon" = "Symbol (optional)";
+"taskadd.label.color" = "Farbe";
+"taskadd.button.cancel" = "Abbrechen";
+"taskadd.button.add" = "Hinzufügen";
+
+/* Settings */
+"settings.title" = "Einstellungen";
+"settings.section.appearance" = "Aussehen";
+"settings.theme.label" = "Thema";
+"settings.theme.light" = "Hell";
+"settings.theme.dark" = "Dunkel";
+"settings.theme.system" = "System";
+"settings.timeformat.label" = "Zeitformat";
+"settings.timeformat.12h" = "12-Stunden";
+"settings.timeformat.24h" = "24-Stunden";
+"settings.language.label" = "Sprache";
+"settings.language.english" = "English";
+"settings.language.turkish" = "Türkçe";
+"settings.language.german" = "Deutsch";
+"settings.language.spanish" = "Español";
+"settings.language.swedish" = "Svenska";
+"settings.language.norwegian" = "Norsk";
+"settings.language.polish" = "Polski";
+"settings.language.italian" = "Italiano";
+"settings.language.french" = "Français";
+"settings.language.danish" = "Dansk";
+"settings.language.dutch" = "Nederlands";
+"settings.language.hungarian" = "Magyar";
+"settings.language.romanian" = "Română";
+"settings.language.chinese_simplified" = "简体中文";
+"settings.language.chinese_traditional" = "繁體中文";
+
+/* Settings - Support Section */
+"settings.section.support" = "Unterstützen";
+"settings.support.title" = "Unterstütze den Entwickler";
+"settings.support.subtitle" = "Zeige deine Wertschätzung mit einem kleinen Trinkgeld";
+
+/* Tips View */
+"tips.title" = "Unterstützen";
+"tips.header.title" = "Unterstütze den Entwickler";
+"tips.header.intro" = "Ich habe diese App für mich selbst erstellt, um meinen Tag zu organisieren. Ich hoffe, sie hilft auch dir, produktiver zu sein.";
+"tips.header.message" = "Diese App wird immer kostenlos und werbefrei sein. Wenn sie dir gefällt und du zukünftige Updates unterstützen möchtest, wäre ich sehr dankbar. Deine Unterstützung motiviert mich weiterzumachen.";
+"tips.header.thanks" = "Danke, egal ob du unterstützt oder nicht! 💚";
+"tips.products.header" = "Wähle einen Trinkgeldbetrag, um deine Wertschätzung zu zeigen";
+"tips.success.title" = "Vielen Dank! 💚";
+"tips.success.message" = "Deine Unterstützung bedeutet mir alles!";
+"tips.error.title" = "Etwas ist schief gelaufen";

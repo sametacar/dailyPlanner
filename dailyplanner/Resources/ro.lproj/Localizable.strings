@@ -1,0 +1,68 @@
+/* Delete Confirmation */
+"delete.confirmation.title" = "Sigur doriți să ștergeți \"%@\"?";
+"delete.button.cancel" = "Anulează";
+"delete.button.delete" = "Șterge";
+
+/* Empty State */
+"tasks.empty.message" = "Atingeți pictograma + pentru a crea o sarcină";
+
+/* Copy Yesterday's Plan */
+"copyplan.empty.title" = "Niciun plan de copiat";
+"copyplan.empty.message" = "Ieri nu există niciun plan salvat de copiat.";
+"copyplan.button.ok" = "OK";
+"copyplan.overwrite.title" = "Suprascrieți planul de azi?";
+"copyplan.overwrite.message" = "Astăzi există deja un plan. Doriți să îl ștergeți și să copiați planul de ieri în schimb?";
+"copyplan.button.overwrite" = "Copiază";
+
+/* Task Add Sheet */
+"taskadd.title" = "Adaugă sarcină";
+"taskadd.section.details" = "Detalii sarcină";
+"taskadd.section.appearance" = "Aspect";
+"taskadd.field.name" = "Nume sarcină";
+"taskadd.field.icon" = "Pictogramă (opțional)";
+"taskadd.label.color" = "Culoare";
+"taskadd.button.cancel" = "Anulează";
+"taskadd.button.add" = "Adaugă";
+
+/* Settings */
+"settings.title" = "Setări";
+"settings.section.appearance" = "Aspect";
+"settings.theme.label" = "Temă";
+"settings.theme.light" = "Luminos";
+"settings.theme.dark" = "Întunecat";
+"settings.theme.system" = "Sistem";
+"settings.timeformat.label" = "Format oră";
+"settings.timeformat.12h" = "12 ore";
+"settings.timeformat.24h" = "24 ore";
+"settings.language.label" = "Limbă";
+"settings.language.english" = "English";
+"settings.language.turkish" = "Türkçe";
+"settings.language.german" = "Deutsch";
+"settings.language.spanish" = "Español";
+"settings.language.swedish" = "Svenska";
+"settings.language.norwegian" = "Norsk";
+"settings.language.polish" = "Polski";
+"settings.language.italian" = "Italiano";
+"settings.language.french" = "Français";
+"settings.language.danish" = "Dansk";
+"settings.language.dutch" = "Nederlands";
+"settings.language.hungarian" = "Magyar";
+"settings.language.romanian" = "Română";
+"settings.language.chinese_simplified" = "简体中文";
+"settings.language.chinese_traditional" = "繁體中文";
+
+/* Settings - Support Section */
+"settings.section.support" = "Susține";
+"settings.support.title" = "Susține dezvoltatorul";
+"settings.support.subtitle" = "Arată-ți aprecierea cu un mic bacșiș";
+
+/* Tips View */
+"tips.title" = "Susține";
+"tips.header.title" = "Susține dezvoltatorul";
+"tips.header.intro" = "Am construit această aplicație pentru mine însumi pentru a-mi organiza ziua. Sper că te ajută și pe tine să îți sporești productivitatea.";
+"tips.header.message" = "Această aplicație va fi întotdeauna gratuită și fără reclame. Dacă îți place și dorești să susții actualizările viitoare, aș fi foarte recunoscător. Sprijinul tău mă motivează să continuu să dezvolt.";
+"tips.header.thanks" = "Mulțumesc, indiferent dacă susții sau nu! 💚";
+"tips.products.header" = "Alege o sumă de bacșiș pentru a-ți arăta aprecierea";
+"tips.success.title" = "Mulțumesc! 💚";
+"tips.success.message" = "Sprijinul tău înseamnă totul!";
+"tips.error.title" = "Ceva nu a mers bine";

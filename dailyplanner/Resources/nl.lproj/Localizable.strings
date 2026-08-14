@@ -1,0 +1,68 @@
+/* Delete Confirmation */
+"delete.confirmation.title" = "Weet je zeker dat je \"%@\" wilt verwijderen?";
+"delete.button.cancel" = "Annuleren";
+"delete.button.delete" = "Verwijderen";
+
+/* Empty State */
+"tasks.empty.message" = "Tik op het +-icoon om een taak te maken";
+
+/* Copy Yesterday's Plan */
+"copyplan.empty.title" = "Geen plan om te kopiëren";
+"copyplan.empty.message" = "Gisteren is er geen opgeslagen plan om te kopiëren.";
+"copyplan.button.ok" = "OK";
+"copyplan.overwrite.title" = "Plan van vandaag overschrijven?";
+"copyplan.overwrite.message" = "Vandaag heeft al een plan. Wil je dit verwijderen en in plaats daarvan het plan van gisteren kopiëren?";
+"copyplan.button.overwrite" = "Kopiëren";
+
+/* Task Add Sheet */
+"taskadd.title" = "Taak toevoegen";
+"taskadd.section.details" = "Taakdetails";
+"taskadd.section.appearance" = "Uiterlijk";
+"taskadd.field.name" = "Taaknaam";
+"taskadd.field.icon" = "Icoon (optioneel)";
+"taskadd.label.color" = "Kleur";
+"taskadd.button.cancel" = "Annuleren";
+"taskadd.button.add" = "Toevoegen";
+
+/* Settings */
+"settings.title" = "Instellingen";
+"settings.section.appearance" = "Uiterlijk";
+"settings.theme.label" = "Thema";
+"settings.theme.light" = "Licht";
+"settings.theme.dark" = "Donker";
+"settings.theme.system" = "Systeem";
+"settings.timeformat.label" = "Tijdformaat";
+"settings.timeformat.12h" = "12-uurs";
+"settings.timeformat.24h" = "24-uurs";
+"settings.language.label" = "Taal";
+"settings.language.english" = "English";
+"settings.language.turkish" = "Türkçe";
+"settings.language.german" = "Deutsch";
+"settings.language.spanish" = "Español";
+"settings.language.swedish" = "Svenska";
+"settings.language.norwegian" = "Norsk";
+"settings.language.polish" = "Polski";
+"settings.language.italian" = "Italiano";
+"settings.language.french" = "Français";
+"settings.language.danish" = "Dansk";
+"settings.language.dutch" = "Nederlands";
+"settings.language.hungarian" = "Magyar";
+"settings.language.romanian" = "Română";
+"settings.language.chinese_simplified" = "简体中文";
+"settings.language.chinese_traditional" = "繁體中文";
+
+/* Settings - Support Section */
+"settings.section.support" = "Ondersteuning";
+"settings.support.title" = "Ondersteun de ontwikkelaar";
+"settings.support.subtitle" = "Toon je waardering met een kleine fooi";
+
+/* Tips View */
+"tips.title" = "Ondersteuning";
+"tips.header.title" = "Ondersteun de ontwikkelaar";
+"tips.header.intro" = "Ik heb deze app voor mezelf gemaakt om mijn dag te organiseren. Ik hoop dat het jou ook helpt om productiever te worden.";
+"tips.header.message" = "Deze app zal altijd gratis en zonder advertenties zijn. Als je het leuk vindt en toekomstige updates wilt ondersteunen, zou ik zeer dankbaar zijn. Jouw ondersteuning motiveert me om door te gaan met ontwikkelen.";
+"tips.header.thanks" = "Bedankt, of je nu ondersteunt of niet! 💚";
+"tips.products.header" = "Kies een fooibedrag om je waardering te tonen";
+"tips.success.title" = "Bedankt! 💚";
+"tips.success.message" = "Jouw ondersteuning betekent alles!";
+"tips.error.title" = "Er is iets misgegaan";

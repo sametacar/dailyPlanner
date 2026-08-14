@@ -1,0 +1,51 @@
+{
+  "identifier" : "FE8C2D4A",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "6739283471",
+      "localizations" : [
+        {
+          "description" : "Buy me a coffee to support development",
+          "displayName" : "Coffee",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.acar.dailyplanner.tip.coffee",
+      "referenceName" : "Coffee Tip",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "12.99",
+      "familyShareable" : false,
+      "internalID" : "6739283472",
+      "localizations" : [
+        {
+          "description" : "Buy me pizza to support development",
+          "displayName" : "Pizza",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.acar.dailyplanner.tip.lunch",
+      "referenceName" : "Pizza Tip",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "hasStoreKitContent" : false,
+    "_applicationInternalID" : "6739283470",
+    "_developerTeamID" : "YOUR_TEAM_ID",
+    "_lastSynchronizedDate" : 760147200.0
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

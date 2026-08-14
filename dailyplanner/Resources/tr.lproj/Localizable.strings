@@ -1,0 +1,73 @@
+/* Delete Confirmation */
+"delete.confirmation.title" = "\"%@\" görevini silmek istediğinize emin misiniz?";
+"delete.button.cancel" = "İptal";
+"delete.button.delete" = "Sil";
+
+/* Empty State */
+"tasks.empty.message" = "+ ikonuna basarak görev oluşturabilirsiniz";
+
+/* Copy Yesterday's Plan */
+"copyplan.empty.title" = "Kopyalanacak Plan Yok";
+"copyplan.empty.message" = "Dünün kaydı boş, kopyalanacak bir dün kaydı yok.";
+"copyplan.button.ok" = "Tamam";
+"copyplan.overwrite.title" = "Bugünün Planı Silinsin mi?";
+"copyplan.overwrite.message" = "Bugünün planı dolu. Silip dünün planını kopyalamak ister misiniz?";
+"copyplan.button.overwrite" = "Kopyala";
+
+/* Task Add Sheet */
+"taskadd.title" = "Görev Ekle";
+"taskadd.section.details" = "Görev Detayları";
+"taskadd.section.appearance" = "Görünüm";
+"taskadd.field.name" = "Görev Adı";
+"taskadd.field.icon" = "İkon (opsiyonel)";
+"taskadd.label.color" = "Renk";
+"taskadd.button.cancel" = "İptal";
+"taskadd.button.add" = "Ekle";
+
+/* Task Edit Sheet */
+"taskedit.title" = "Görevi Düzenle";
+"taskedit.button.save" = "Kaydet";
+"taskedit.button.delete" = "Görevi Sil";
+
+/* Settings */
+"settings.title" = "Ayarlar";
+"settings.section.appearance" = "Görünüm";
+"settings.theme.label" = "Tema";
+"settings.theme.light" = "Açık";
+"settings.theme.dark" = "Koyu";
+"settings.theme.system" = "Sistem";
+"settings.timeformat.label" = "Saat Formatı";
+"settings.timeformat.12h" = "12 Saat";
+"settings.timeformat.24h" = "24 Saat";
+"settings.language.label" = "Dil";
+"settings.language.english" = "English";
+"settings.language.turkish" = "Türkçe";
+"settings.language.german" = "Deutsch";
+"settings.language.spanish" = "Español";
+"settings.language.swedish" = "Svenska";
+"settings.language.norwegian" = "Norsk";
+"settings.language.polish" = "Polski";
+"settings.language.italian" = "Italiano";
+"settings.language.french" = "Français";
+"settings.language.danish" = "Dansk";
+"settings.language.dutch" = "Nederlands";
+"settings.language.hungarian" = "Magyar";
+"settings.language.romanian" = "Română";
+"settings.language.chinese_simplified" = "简体中文";
+"settings.language.chinese_traditional" = "繁體中文";
+
+/* Settings - Support Section */
+"settings.section.support" = "Destek";
+"settings.support.title" = "Geliştiriciyi Destekle";
+"settings.support.subtitle" = "Küçük bir bahşişle takdirini göster";
+
+/* Tips View */
+"tips.title" = "Destek";
+"tips.header.title" = "Geliştiriciyi Destekle";
+"tips.header.intro" = "Bu uygulamayı günümü organize etmek için kendime için yaptım. Umarım senin de verimliliğini artırır.";
+"tips.header.message" = "Bu uygulama her zaman ücretsiz ve reklamsız olacak. Eğer beğendiysen ve gelecekteki güncellemeleri desteklemek istersen,çok minnettar olurum. Desteğin beni geliştirmeye devam etmeye motive edecektir";
+"tips.header.thanks" = "Destek olsan da olmasan da teşekkürler! 💚";
+"tips.products.header" = "Takdirini göstermek için bir bahşiş miktarı seç";
+"tips.success.title" = "Teşekkürler! 💚";
+"tips.success.message" = "Desteğin benim için her şey demek!";
+"tips.error.title" = "Bir şeyler ters gitti";

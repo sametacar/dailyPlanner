@@ -1,0 +1,68 @@
+/* Delete Confirmation */
+"delete.confirmation.title" = "Sei sicuro di voler eliminare \"%@\"?";
+"delete.button.cancel" = "Annulla";
+"delete.button.delete" = "Elimina";
+
+/* Empty State */
+"tasks.empty.message" = "Tocca l'icona + per creare un'attività";
+
+/* Copy Yesterday's Plan */
+"copyplan.empty.title" = "Nessun piano da copiare";
+"copyplan.empty.message" = "Ieri non ha un piano salvato da copiare.";
+"copyplan.button.ok" = "OK";
+"copyplan.overwrite.title" = "Sovrascrivere il piano di oggi?";
+"copyplan.overwrite.message" = "Oggi ha già un piano. Vuoi eliminarlo e copiare invece il piano di ieri?";
+"copyplan.button.overwrite" = "Copia";
+
+/* Task Add Sheet */
+"taskadd.title" = "Aggiungi attività";
+"taskadd.section.details" = "Dettagli attività";
+"taskadd.section.appearance" = "Aspetto";
+"taskadd.field.name" = "Nome attività";
+"taskadd.field.icon" = "Icona (opzionale)";
+"taskadd.label.color" = "Colore";
+"taskadd.button.cancel" = "Annulla";
+"taskadd.button.add" = "Aggiungi";
+
+/* Settings */
+"settings.title" = "Impostazioni";
+"settings.section.appearance" = "Aspetto";
+"settings.theme.label" = "Tema";
+"settings.theme.light" = "Chiaro";
+"settings.theme.dark" = "Scuro";
+"settings.theme.system" = "Sistema";
+"settings.timeformat.label" = "Formato ora";
+"settings.timeformat.12h" = "12 ore";
+"settings.timeformat.24h" = "24 ore";
+"settings.language.label" = "Lingua";
+"settings.language.english" = "English";
+"settings.language.turkish" = "Türkçe";
+"settings.language.german" = "Deutsch";
+"settings.language.spanish" = "Español";
+"settings.language.swedish" = "Svenska";
+"settings.language.norwegian" = "Norsk";
+"settings.language.polish" = "Polski";
+"settings.language.italian" = "Italiano";
+"settings.language.french" = "Français";
+"settings.language.danish" = "Dansk";
+"settings.language.dutch" = "Nederlands";
+"settings.language.hungarian" = "Magyar";
+"settings.language.romanian" = "Română";
+"settings.language.chinese_simplified" = "简体中文";
+"settings.language.chinese_traditional" = "繁體中文";
+
+/* Settings - Support Section */
+"settings.section.support" = "Supporta";
+"settings.support.title" = "Supporta lo sviluppatore";
+"settings.support.subtitle" = "Mostra il tuo apprezzamento con una piccola mancia";
+
+/* Tips View */
+"tips.title" = "Supporta";
+"tips.header.title" = "Supporta lo sviluppatore";
+"tips.header.intro" = "Ho creato quest'app per me stesso per organizzare la mia giornata. Spero che aiuti anche te ad aumentare la tua produttività.";
+"tips.header.message" = "Quest'app sarà sempre gratuita e senza pubblicità. Se ti piace e vuoi supportare i futuri aggiornamenti, te ne sarei molto grato. Il tuo supporto mi motiva a continuare a sviluppare.";
+"tips.header.thanks" = "Grazie, che tu supporti o meno! 💚";
+"tips.products.header" = "Scegli un importo di mancia per mostrare il tuo apprezzamento";
+"tips.success.title" = "Grazie! 💚";
+"tips.success.message" = "Il tuo supporto significa tutto!";
+"tips.error.title" = "Qualcosa è andato storto";

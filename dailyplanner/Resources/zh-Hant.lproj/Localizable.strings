@@ -1,0 +1,73 @@
+/* Delete Confirmation */
+"delete.confirmation.title" = "確定要刪除\"%@\"嗎？";
+"delete.button.cancel" = "取消";
+"delete.button.delete" = "刪除";
+
+/* Empty State */
+"tasks.empty.message" = "點擊 + 圖示建立任務";
+
+/* Copy Yesterday's Plan */
+"copyplan.empty.title" = "沒有可複製的計劃";
+"copyplan.empty.message" = "昨天沒有已儲存的計劃可以複製。";
+"copyplan.button.ok" = "好";
+"copyplan.overwrite.title" = "要覆蓋今天的計劃嗎？";
+"copyplan.overwrite.message" = "今天已經有計劃了。是否要刪除並改為複製昨天的計劃？";
+"copyplan.button.overwrite" = "複製";
+
+/* Task Add Sheet */
+"taskadd.title" = "新增任務";
+"taskadd.section.details" = "任務詳情";
+"taskadd.section.appearance" = "外觀";
+"taskadd.field.name" = "任務名稱";
+"taskadd.field.icon" = "圖示（選填）";
+"taskadd.label.color" = "顏色";
+"taskadd.button.cancel" = "取消";
+"taskadd.button.add" = "新增";
+
+/* Task Edit Sheet */
+"taskedit.title" = "編輯任務";
+"taskedit.button.save" = "儲存";
+"taskedit.button.delete" = "刪除任務";
+
+/* Settings */
+"settings.title" = "設定";
+"settings.section.appearance" = "外觀";
+"settings.theme.label" = "主題";
+"settings.theme.light" = "淺色";
+"settings.theme.dark" = "深色";
+"settings.theme.system" = "跟隨系統";
+"settings.timeformat.label" = "時間格式";
+"settings.timeformat.12h" = "12小時制";
+"settings.timeformat.24h" = "24小時制";
+"settings.language.label" = "語言";
+"settings.language.english" = "English";
+"settings.language.turkish" = "Türkçe";
+"settings.language.german" = "Deutsch";
+"settings.language.spanish" = "Español";
+"settings.language.swedish" = "Svenska";
+"settings.language.norwegian" = "Norsk";
+"settings.language.polish" = "Polski";
+"settings.language.italian" = "Italiano";
+"settings.language.french" = "Français";
+"settings.language.danish" = "Dansk";
+"settings.language.dutch" = "Nederlands";
+"settings.language.hungarian" = "Magyar";
+"settings.language.romanian" = "Română";
+"settings.language.chinese_simplified" = "简体中文";
+"settings.language.chinese_traditional" = "繁體中文";
+
+/* Settings - Support Section */
+"settings.section.support" = "支持";
+"settings.support.title" = "支持開發者";
+"settings.support.subtitle" = "用小費表達你的感激";
+
+/* Tips View */
+"tips.title" = "支持";
+"tips.header.title" = "支持開發者";
+"tips.header.intro" = "我為自己開發了這個應用程式來規劃我的一天。 希望它也能幫助你提高生產力。";
+"tips.header.message" = "這個應用程式將永遠免費且無廣告。如果你喜歡它並希望支持未來的更新， 我將非常感激。你的支持激勵我繼續開發。";
+"tips.header.thanks" = "無論你是否支持，都感謝你！💚";
+"tips.products.header" = "選擇一個小費金額來表達你的感激";
+"tips.success.title" = "謝謝你！💚";
+"tips.success.message" = "你的支持對我意義重大！";
+"tips.error.title" = "出了點問題";

@@ -1,0 +1,43 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Clock face -->
+  <circle cx="512" cy="512" r="480" fill="#F5F5F0"/>
+
+  <!-- Clock border/frame -->
+  <circle cx="512" cy="512" r="480" fill="none" stroke="#2C2C2C" stroke-width="40"/>
+
+  <!-- Hour markers -->
+  <!-- 12 o'clock -->
+  <rect x="488" y="80" width="48" height="90" rx="12" fill="#2C2C2C"/>
+  <!-- 3 o'clock -->
+  <rect x="854" y="488" width="90" height="48" rx="12" fill="#2C2C2C"/>
+  <!-- 6 o'clock -->
+  <rect x="488" y="854" width="48" height="90" rx="12" fill="#2C2C2C"/>
+  <!-- 9 o'clock -->
+  <rect x="80" y="488" width="90" height="48" rx="12" fill="#2C2C2C"/>
+
+  <!-- Small hour markers -->
+  <!-- 1 o'clock -->
+  <circle cx="750" cy="274" r="16" fill="#888"/>
+  <!-- 2 o'clock -->
+  <circle cx="870" cy="394" r="16" fill="#888"/>
+  <!-- 4 o'clock -->
+  <circle cx="870" cy="630" r="16" fill="#888"/>
+  <!-- 5 o'clock -->
+  <circle cx="750" cy="750" r="16" fill="#888"/>
+  <!-- 7 o'clock -->
+  <circle cx="274" cy="750" r="16" fill="#888"/>
+  <!-- 8 o'clock -->
+  <circle cx="154" cy="630" r="16" fill="#888"/>
+  <!-- 10 o'clock -->
+  <circle cx="154" cy="394" r="16" fill="#888"/>
+  <!-- 11 o'clock -->
+  <circle cx="274" cy="274" r="16" fill="#888"/>
+
+  <!-- Check mark as clock hands -->
+  <path d="M 240 520 L 420 700 L 820 280"
+        fill="none"
+        stroke="#2ECC71"
+        stroke-width="64"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+</svg>

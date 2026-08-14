@@ -1,0 +1,68 @@
+/* Delete Confirmation */
+"delete.confirmation.title" = "Är du säker på att du vill radera \"%@\"?";
+"delete.button.cancel" = "Avbryt";
+"delete.button.delete" = "Radera";
+
+/* Empty State */
+"tasks.empty.message" = "Tryck på +-ikonen för att skapa en uppgift";
+
+/* Copy Yesterday's Plan */
+"copyplan.empty.title" = "Ingen plan att kopiera";
+"copyplan.empty.message" = "Igår finns ingen sparad plan att kopiera.";
+"copyplan.button.ok" = "OK";
+"copyplan.overwrite.title" = "Skriva över dagens plan?";
+"copyplan.overwrite.message" = "Idag finns redan en plan. Vill du ta bort den och kopiera gårdagens plan istället?";
+"copyplan.button.overwrite" = "Kopiera";
+
+/* Task Add Sheet */
+"taskadd.title" = "Lägg till uppgift";
+"taskadd.section.details" = "Uppgiftsdetaljer";
+"taskadd.section.appearance" = "Utseende";
+"taskadd.field.name" = "Uppgiftsnamn";
+"taskadd.field.icon" = "Ikon (valfritt)";
+"taskadd.label.color" = "Färg";
+"taskadd.button.cancel" = "Avbryt";
+"taskadd.button.add" = "Lägg till";
+
+/* Settings */
+"settings.title" = "Inställningar";
+"settings.section.appearance" = "Utseende";
+"settings.theme.label" = "Tema";
+"settings.theme.light" = "Ljus";
+"settings.theme.dark" = "Mörk";
+"settings.theme.system" = "System";
+"settings.timeformat.label" = "Tidsformat";
+"settings.timeformat.12h" = "12-timmar";
+"settings.timeformat.24h" = "24-timmar";
+"settings.language.label" = "Språk";
+"settings.language.english" = "English";
+"settings.language.turkish" = "Türkçe";
+"settings.language.german" = "Deutsch";
+"settings.language.spanish" = "Español";
+"settings.language.swedish" = "Svenska";
+"settings.language.norwegian" = "Norsk";
+"settings.language.polish" = "Polski";
+"settings.language.italian" = "Italiano";
+"settings.language.french" = "Français";
+"settings.language.danish" = "Dansk";
+"settings.language.dutch" = "Nederlands";
+"settings.language.hungarian" = "Magyar";
+"settings.language.romanian" = "Română";
+"settings.language.chinese_simplified" = "简体中文";
+"settings.language.chinese_traditional" = "繁體中文";
+
+/* Settings - Support Section */
+"settings.section.support" = "Stöd";
+"settings.support.title" = "Stöd utvecklaren";
+"settings.support.subtitle" = "Visa din uppskattning med en liten dricks";
+
+/* Tips View */
+"tips.title" = "Stöd";
+"tips.header.title" = "Stöd utvecklaren";
+"tips.header.intro" = "Jag byggde den här appen för att organisera min dag. Jag hoppas att den hjälper dig att öka din produktivitet också.";
+"tips.header.message" = "Den här appen kommer alltid vara gratis och utan reklam. Om du gillar den och vill stödja framtida uppdateringar, vore jag mycket tacksam. Ditt stöd motiverar mig att fortsätta utveckla.";
+"tips.header.thanks" = "Tack, oavsett om du stödjer eller inte! 💚";
+"tips.products.header" = "Välj ett dricksbelopp för att visa din uppskattning";
+"tips.success.title" = "Tack! 💚";
+"tips.success.message" = "Ditt stöd betyder allt!";
+"tips.error.title" = "Något gick fel";
