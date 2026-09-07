@@ -55,6 +55,8 @@
 "settings.section.support" = "Ondersteuning";
 "settings.support.title" = "Ondersteun de ontwikkelaar";
 "settings.support.subtitle" = "Toon je waardering met een kleine fooi";
+"settings.review.title" = "Beoordeel de app";
+"settings.review.subtitle" = "Vind je de app leuk? Laat een beoordeling achter";
 
 /* Tips View */
 "tips.title" = "Ondersteuning";

@@ -55,6 +55,8 @@
 "settings.section.support" = "Támogatás";
 "settings.support.title" = "Támogasd a fejlesztőt";
 "settings.support.subtitle" = "Mutasd meg elismerésedet egy kis borravalóval";
+"settings.review.title" = "Értékeld az alkalmazást";
+"settings.review.subtitle" = "Tetszik az alkalmazás? Hagyj egy értékelést";
 
 /* Tips View */
 "tips.title" = "Támogatás";

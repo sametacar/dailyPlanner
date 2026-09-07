@@ -113,9 +113,6 @@ struct TaskItem: View {
                 .fontWeight(.semibold)
                 .foregroundStyle(.black.opacity(0.74))
             Spacer()
-            if let icon = task.icon {
-                Text(icon)
-            }
 
             if isEditMode {
                 Image(systemName: "chevron.right")
@@ -124,9 +121,24 @@ struct TaskItem: View {
             }
         }
         .padding()
-        .background(Color(hex: task.color))
+        .background(
+            ZStack {
+                Color(hex: task.color)
+
+                if let icon = task.icon {
+                    GeometryReader { geo in
+                        Image(systemName: icon)
+                            .font(.system(size: geo.size.height * 1.4, weight: .bold))
+                            .foregroundStyle(.white.opacity(0.35))
+                            .rotationEffect(.degrees(-12))
+                            .position(x: geo.size.width - 4, y: geo.size.height * 0.5 + 8)
+                    }
+                }
+            }
+        )
         .cornerRadius(8)
         .contentShape(Rectangle())
+        .contentShape(.dragPreview, RoundedRectangle(cornerRadius: 8))
         .onTapGesture {
             if isEditMode {
                 onEdit()

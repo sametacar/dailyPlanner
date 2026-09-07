@@ -60,6 +60,8 @@
 "settings.section.support" = "Destek";
 "settings.support.title" = "Geliştiriciyi Destekle";
 "settings.support.subtitle" = "Küçük bir bahşişle takdirini göster";
+"settings.review.title" = "Uygulamayı Değerlendir";
+"settings.review.subtitle" = "Uygulamayı beğendiysen bize puan ver";
 
 /* Tips View */
 "tips.title" = "Destek";

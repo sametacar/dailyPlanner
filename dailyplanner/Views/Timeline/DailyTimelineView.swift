@@ -9,11 +9,21 @@ import SwiftUI
 import SwiftData
 import Combine
 
+/// Symmetric gap kept between a task card and the hour lines above/below it,
+/// so the card reads as centered/inset within its slot rather than touching
+/// the grid lines. Shared between the Y-offset calculation and the card's
+/// own height so both sides of the gap stay equal.
+private let taskVerticalPadding: CGFloat = 0.5
+
 struct DailyTimelineView: View {
     @State private var viewModel = TimelineViewModel()
     @State private var currentTime = Date()
     @State private var showEmptyYesterdayAlert = false
     @State private var showOverwriteConfirmAlert = false
+    @State private var highlightedTaskId: UUID?
+    @State private var highlightEpoch: Int = 0
+    @State private var lastHighlightComputeTime: Date = .distantPast
+    @State private var isBulkDeleting = false
     @Binding var showTasks: Bool
     @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) private var scenePhase
@@ -104,7 +114,7 @@ struct DailyTimelineView: View {
 
                     // Foreground: Tasks overlay
                     ForEach(todayTasks) { task in
-                        DayTaskCard(task: task, allTasks: todayTasks)
+                        DayTaskCard(task: task, allTasks: todayTasks, isHighlighted: task.id == highlightedTaskId, highlightEpoch: highlightEpoch, isBulkDeleting: isBulkDeleting)
                             .offset(y: calculateYOffset(for: task))
                     }
 
@@ -113,7 +123,29 @@ struct DailyTimelineView: View {
                         CurrentTimeIndicator()
                             .offset(y: offset)
                     }
+
+                    // Short hour tick marks - an independent, always-static top
+                    // layer, so they're never affected by per-row drag/hover state.
+                    ForEach(Array(viewModel.timeSlots.enumerated()), id: \.element.id) { index, _ in
+                        Rectangle()
+                            .fill(Color.dpTimelineLine.opacity(0.4))
+                            .frame(width: 8, height: 1.5)
+                            .padding(.leading, 68)
+                            .offset(y: CGFloat(index) * 60)
+                            .allowsHitTesting(false)
+                    }
+
+                    // Single continuous vertical divider spanning the entire
+                    // page (including the top padding above 06:00), instead
+                    // of relying on each row's own divider lining up seamlessly.
+                    Rectangle()
+                        .fill(Color.dpTimelineLine)
+                        .frame(width: 1, height: CGFloat(viewModel.timeSlots.count) * 60 + 12)
+                        .padding(.leading, 72)
+                        .offset(y: -12)
+                        .allowsHitTesting(false)
                 }
+                .padding(.top, 12)
             }
             .onReceive(timer) { _ in
                 currentTime = Date()
@@ -124,13 +156,43 @@ struct DailyTimelineView: View {
                 if newPhase == .active {
                     // App came to foreground - check if day changed
                     viewModel.checkAndUpdateDate()
+                    computeHighlightedTask()
                 }
             }
         }
-        .background(Color.dpAppBackground)
+        .background(Color.dpTimelineBackground)
+        .onAppear {
+            computeHighlightedTask()
+        }
         .task {
             await cleanupOldTasks()
         }
+    }
+
+    /// Picks the task that's happening right now, or the nearest upcoming one today,
+    /// so the launch animation can spotlight it instead of animating every icon.
+    ///
+    /// Debounced: cold launch fires both .onAppear and the scenePhase -> .active
+    /// transition within milliseconds of each other, and their exact ordering isn't
+    /// guaranteed. Skipping calls that land within 1s of the previous one collapses
+    /// that double-fire into one, while a genuine return from the background (seconds
+    /// or minutes later) always passes through.
+    private func computeHighlightedTask() {
+        let now = Date()
+        guard now.timeIntervalSince(lastHighlightComputeTime) > 1.0 else { return }
+        lastHighlightComputeTime = now
+
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: now)
+
+        if let current = todayTasks.first(where: { $0.startHour <= hour && hour < $0.endHour }) {
+            highlightedTaskId = current.id
+        } else if let next = todayTasks.filter({ $0.startHour > hour }).sorted(by: { $0.startHour < $1.startHour }).first {
+            highlightedTaskId = next.id
+        } else {
+            highlightedTaskId = nil
+        }
+        highlightEpoch += 1
     }
 
     /// Clean up DayTasks older than 90 days (runs async in background, once per day)
@@ -185,9 +247,10 @@ struct DailyTimelineView: View {
             ? task.startHour - firstHour
             : (24 - firstHour) + task.startHour
 
-        // Offset by half the text height so tasks start from center of time label
-        let timeLabelOffset: CGFloat = 8
-        return CGFloat(slotIndex) * slotHeight + timeLabelOffset
+        // Small symmetric gap from the hour line, matching the equal gap
+        // subtracted from the card's height so it sits centered/inset within
+        // its slot instead of touching the hour lines above and below.
+        return CGFloat(slotIndex) * slotHeight + taskVerticalPadding
     }
 
     /// Calculate Y offset for current time indicator
@@ -249,8 +312,21 @@ struct DailyTimelineView: View {
         guard let yesterday = calendar.date(byAdding: .day, value: -1, to: viewModel.currentDate) else { return }
 
         let yesterdayTasks = DayPlanCopier.tasks(in: dayTasks, on: yesterday, calendar: calendar)
-        DayPlanCopier.copy(yesterdayTasks, to: viewModel.currentDate, replacing: todayTasks, modelContext: modelContext)
-        print("Copied \(yesterdayTasks.count) task(s) from yesterday to today")
+        let tasksToReplace = todayTasks
+
+        guard !tasksToReplace.isEmpty else {
+            DayPlanCopier.copy(yesterdayTasks, to: viewModel.currentDate, replacing: tasksToReplace, modelContext: modelContext)
+            print("Copied \(yesterdayTasks.count) task(s) from yesterday to today")
+            return
+        }
+
+        // Play the shatter/dissolve effect on today's existing cards before replacing them
+        isBulkDeleting = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+            DayPlanCopier.copy(yesterdayTasks, to: viewModel.currentDate, replacing: tasksToReplace, modelContext: modelContext)
+            isBulkDeleting = false
+            print("Copied \(yesterdayTasks.count) task(s) from yesterday to today")
+        }
     }
 }
 
@@ -258,16 +334,38 @@ struct DailyTimelineView: View {
 struct DayTaskCard: View {
     let task: DayTaskModel
     let allTasks: [DayTaskModel]
+    let isHighlighted: Bool
+    let highlightEpoch: Int
+    let isBulkDeleting: Bool
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.colorScheme) private var colorScheme
     @State private var isSelected = false
     @State private var showDeleteAlert = false
     @State private var isDeleting = false
+    @State private var pulsedEpoch: Int = -1
+    @State private var iconPulseScale: CGFloat = 1.0
 
     private let slotHeight: CGFloat = 60
 
+    private var iconOpacity: Double {
+        colorScheme == .light ? 0.55 : 0.42
+    }
+
+    private func triggerPopInIfNeeded() {
+        guard isHighlighted, pulsedEpoch != highlightEpoch else { return }
+        pulsedEpoch = highlightEpoch
+        withAnimation(.spring(response: 0.3, dampingFraction: 0.45).delay(0.3)) {
+            iconPulseScale = 1.35
+        } completion: {
+            withAnimation(.spring(response: 0.35, dampingFraction: 0.65)) {
+                iconPulseScale = 1.0
+            }
+        }
+    }
+
     private var taskHeight: CGFloat {
         let duration = task.endHour - task.startHour
-        return CGFloat(duration) * slotHeight
+        return CGFloat(duration) * slotHeight - (taskVerticalPadding * 2)
     }
 
     private var taskFontSize: CGFloat {
@@ -293,10 +391,6 @@ struct DayTaskCard: View {
             // Main task content
             ZStack {
                 HStack {
-                    if let icon = task.icon {
-                        Text(icon)
-                            .font(.system(size: taskFontSize * 1.1))
-                    }
                     Text(task.name)
                         .font(.system(size: taskFontSize, weight: .semibold))
                         .foregroundStyle(.black.opacity(0.92))
@@ -378,6 +472,31 @@ struct DayTaskCard: View {
                     // Base color with transparency for glass effect
                     Color(hex: task.color)
                         .opacity(0.75)
+
+                    // Watermark icon embedded in the background
+                    if let icon = task.icon {
+                        GeometryReader { geo in
+                            let iconSize = min(min(geo.size.width, geo.size.height) * 0.68, 59)
+                            let baseSize: CGFloat = 41
+                            let leftShift = max(0, iconSize - baseSize) * 0.5
+
+                            Image(systemName: icon)
+                                .font(.system(size: iconSize, weight: .bold))
+                                .foregroundStyle(.white.opacity(iconOpacity))
+                                .rotationEffect(.degrees(-24))
+                                .scaleEffect(isHighlighted ? iconPulseScale : 1.0)
+                                .position(x: geo.size.width - 20 - leftShift, y: geo.size.height - 20)
+                                .onAppear {
+                                    triggerPopInIfNeeded()
+                                }
+                                .onChange(of: isHighlighted) { _, _ in
+                                    triggerPopInIfNeeded()
+                                }
+                                .onChange(of: highlightEpoch) { _, _ in
+                                    triggerPopInIfNeeded()
+                                }
+                        }
+                    }
 
                     // Gradient overlay for depth
                     LinearGradient(
@@ -464,6 +583,11 @@ struct DayTaskCard: View {
         .overlay {
             if isDeleting {
                 ShatterView(task: task, taskHeight: taskHeight)
+            }
+        }
+        .onChange(of: isBulkDeleting) { _, newValue in
+            if newValue {
+                isDeleting = true
             }
         }
         .alert("Delete Task", isPresented: $showDeleteAlert) {
@@ -587,7 +711,8 @@ struct CurrentTimeIndicator: View {
 
             Spacer()
         }
-        .offset(y: 3) // Center the icon vertically with the time line
+        .frame(height: 14)
+        .offset(y: -7) // Center the icon's own bounding box on the hour line
     }
 }
 

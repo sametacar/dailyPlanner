@@ -55,6 +55,8 @@
 "settings.section.support" = "Susține";
 "settings.support.title" = "Susține dezvoltatorul";
 "settings.support.subtitle" = "Arată-ți aprecierea cu un mic bacșiș";
+"settings.review.title" = "Evaluează aplicația";
+"settings.review.subtitle" = "Îți place aplicația? Lasă o recenzie";
 
 /* Tips View */
 "tips.title" = "Susține";

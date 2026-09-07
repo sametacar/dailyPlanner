@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(ThemeManager.self) private var themeManager
+    @Environment(\.openURL) private var openURL
 
     var body: some View {
         Form {
@@ -84,6 +85,37 @@ struct SettingsView: View {
                             Spacer()
                         }
                     }
+
+                    Button {
+                        requestAppStoreReview()
+                    } label: {
+                        HStack(spacing: 12) {
+                            ZStack {
+                                Circle()
+                                    .fill(Color.yellow.opacity(0.15))
+                                    .frame(width: 36, height: 36)
+
+                                Text("⭐️")
+                                    .font(.title3)
+                            }
+
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("settings.review.title".localized)
+                                    .font(.body)
+
+                                Text("settings.review.subtitle".localized)
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+
+                            Spacer()
+
+                            Image(systemName: "arrow.up.right")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .tint(.primary)
                 } header: {
                     Text("settings.section.support".localized)
                 }
@@ -91,6 +123,11 @@ struct SettingsView: View {
             .navigationTitle("settings.title".localized)
             .preferredColorScheme(themeManager.currentMode.colorScheme)
             .id(themeManager.language.rawValue)
+    }
+
+    private func requestAppStoreReview() {
+        guard let url = URL(string: "https://apps.apple.com/app/id6758051771?action=write-review") else { return }
+        openURL(url)
     }
 }
 

@@ -60,6 +60,8 @@
 "settings.section.support" = "支持";
 "settings.support.title" = "支持開發者";
 "settings.support.subtitle" = "用小費表達你的感激";
+"settings.review.title" = "評價應用程式";
+"settings.review.subtitle" = "喜歡這個應用程式嗎？留下您的評價吧";
 
 /* Tips View */
 "tips.title" = "支持";

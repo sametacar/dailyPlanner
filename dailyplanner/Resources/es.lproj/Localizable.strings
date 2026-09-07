@@ -55,6 +55,8 @@
 "settings.section.support" = "Apoyar";
 "settings.support.title" = "Apoya al Desarrollador";
 "settings.support.subtitle" = "Muestra tu aprecio con una pequeña propina";
+"settings.review.title" = "Valora la App";
+"settings.review.subtitle" = "¿Te gusta la app? Déjanos una reseña";
 
 /* Tips View */
 "tips.title" = "Apoyar";

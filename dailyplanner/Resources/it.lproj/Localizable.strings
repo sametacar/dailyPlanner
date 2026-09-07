@@ -55,6 +55,8 @@
 "settings.section.support" = "Supporta";
 "settings.support.title" = "Supporta lo sviluppatore";
 "settings.support.subtitle" = "Mostra il tuo apprezzamento con una piccola mancia";
+"settings.review.title" = "Valuta l'App";
+"settings.review.subtitle" = "Ti piace l'app? Lascia una recensione";
 
 /* Tips View */
 "tips.title" = "Supporta";

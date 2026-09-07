@@ -60,6 +60,8 @@
 "settings.section.support" = "Support";
 "settings.support.title" = "Support the Developer";
 "settings.support.subtitle" = "Show your appreciation with a small tip";
+"settings.review.title" = "Review the App";
+"settings.review.subtitle" = "Enjoying the app? Leave us a review";
 
 /* Tips View */
 "tips.title" = "Support";

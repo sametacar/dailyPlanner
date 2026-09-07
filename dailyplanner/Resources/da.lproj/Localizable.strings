@@ -55,6 +55,8 @@
 "settings.section.support" = "Støt";
 "settings.support.title" = "Støt udvikleren";
 "settings.support.subtitle" = "Vis din påskønnelse med et lille drikkepenge";
+"settings.review.title" = "Bedøm appen";
+"settings.review.subtitle" = "Kan du lide appen? Giv os en anmeldelse";
 
 /* Tips View */
 "tips.title" = "Støt";

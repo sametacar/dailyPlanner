@@ -55,6 +55,8 @@
 "settings.section.support" = "Unterstützen";
 "settings.support.title" = "Unterstütze den Entwickler";
 "settings.support.subtitle" = "Zeige deine Wertschätzung mit einem kleinen Trinkgeld";
+"settings.review.title" = "Bewerte die App";
+"settings.review.subtitle" = "Gefällt dir die App? Hinterlasse eine Bewertung";
 
 /* Tips View */
 "tips.title" = "Unterstützen";

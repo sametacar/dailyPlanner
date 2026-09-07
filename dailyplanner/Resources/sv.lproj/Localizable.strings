@@ -55,6 +55,8 @@
 "settings.section.support" = "Stöd";
 "settings.support.title" = "Stöd utvecklaren";
 "settings.support.subtitle" = "Visa din uppskattning med en liten dricks";
+"settings.review.title" = "Betygsätt appen";
+"settings.review.subtitle" = "Gillar du appen? Lämna ett betyg";
 
 /* Tips View */
 "tips.title" = "Stöd";

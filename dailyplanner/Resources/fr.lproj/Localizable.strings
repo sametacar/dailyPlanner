@@ -55,6 +55,8 @@
 "settings.section.support" = "Soutenir";
 "settings.support.title" = "Soutenir le développeur";
 "settings.support.subtitle" = "Montrez votre appréciation avec un petit pourboire";
+"settings.review.title" = "Évaluer l'application";
+"settings.review.subtitle" = "Vous aimez l'application ? Laissez un avis";
 
 /* Tips View */
 "tips.title" = "Soutenir";
