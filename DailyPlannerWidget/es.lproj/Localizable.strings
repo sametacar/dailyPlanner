@@ -1,0 +1,5 @@
+/* Daily Planner widget */
+
+"widget.gallery.name" = "Plan del día";
+"widget.gallery.description" = "Ve tu plan del día y lo que viene a continuación en la pantalla de inicio.";
+"widget.later" = "Más tarde";

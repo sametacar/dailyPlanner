@@ -1,0 +1,53 @@
+<!doctype html>
+<html style="--n:1"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500..800&display=block" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  :root{--ink:#163a63;--accent:#17b25b;--pastel1:#cfe6fb;--pastel2:#d9f3e3;--pastel3:#eef9ec}
+  .slide{background:
+      radial-gradient(1400px 900px at 50% -6%, rgba(255,255,255,.65), transparent 60%),
+      linear-gradient(165deg, var(--pastel1) 0%, var(--pastel2) 55%, var(--pastel3) 100%)}
+  .badge{position:absolute;left:96px;top:116px;width:88px;height:88px;border-radius:26px;overflow:hidden;
+    box-shadow:0 18px 30px -12px rgba(22,58,99,.35);background:#fff}
+  .badge img{width:100%;height:100%;display:block}
+  .copy{top:276px}
+  .h{font:800 150px/.98 Manrope;letter-spacing:-.03em;color:var(--ink)}
+  .h .hl{color:var(--accent);position:relative;display:inline-block}
+  .sub{font:600 46px/1.35 Manrope;letter-spacing:-.01em;color:color-mix(in srgb,var(--ink) 72%,transparent);margin-top:40px}
+  .ticks{position:absolute;left:50%;top:1780px;width:1680px;height:1680px;margin-left:-840px;margin-top:-840px;opacity:.16}
+  .phone{left:190px;top:884px}
+  .grain{opacity:.05}
+</style>
+<script src="../../screens/screens.js"></script>
+</head><body>
+
+<div class="slide" style="left:0">
+  <div class="badge"><img src="../../assets/brand/icon.png" alt=""></div>
+  <svg class="ticks" viewBox="0 0 200 200">
+    <g stroke="#163a63" stroke-width="2.4" stroke-linecap="round" transform="translate(100,100)">
+      <line x1="0" y1="-92" x2="0" y2="-80"/>
+      <line x1="0" y1="-92" x2="0" y2="-80" transform="rotate(30)"/>
+      <line x1="0" y1="-92" x2="0" y2="-80" transform="rotate(60)"/>
+      <line x1="0" y1="-92" x2="0" y2="-80" transform="rotate(90)"/>
+      <line x1="0" y1="-92" x2="0" y2="-80" transform="rotate(120)"/>
+      <line x1="0" y1="-92" x2="0" y2="-80" transform="rotate(150)"/>
+      <line x1="0" y1="-92" x2="0" y2="-80" transform="rotate(180)"/>
+      <line x1="0" y1="-92" x2="0" y2="-80" transform="rotate(210)"/>
+      <line x1="0" y1="-92" x2="0" y2="-80" transform="rotate(240)"/>
+      <line x1="0" y1="-92" x2="0" y2="-80" transform="rotate(270)"/>
+      <line x1="0" y1="-92" x2="0" y2="-80" transform="rotate(300)"/>
+      <line x1="0" y1="-92" x2="0" y2="-80" transform="rotate(330)"/>
+    </g>
+    <circle cx="100" cy="100" r="96" fill="none" stroke="#163a63" stroke-width="1.2" stroke-dasharray="1 7"/>
+  </svg>
+  <div class="copy">
+    <div class="h">Plan your<br><span class="hl">day.</span></div>
+    <div class="sub">Hour by hour, kept simple.</div>
+  </div>
+  <div class="phone" data-src="iphone-17-2026-10-10-at-13-45-14" data-w="940"></div>
+  <div class="grain"></div>
+</div>
+
+<script src="shared.js"></script>
+</body></html>

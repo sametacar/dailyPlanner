@@ -1,0 +1,5 @@
+/* Daily Planner widget */
+
+"widget.gallery.name" = "Dagsplan";
+"widget.gallery.description" = "Se din dagsplan och vad som kommer härnäst på hemskärmen.";
+"widget.later" = "Senare";

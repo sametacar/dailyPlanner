@@ -27,6 +27,7 @@
 /* Settings */
 "settings.title" = "Setări";
 "settings.section.appearance" = "Aspect";
+"settings.version.label" = "Versiune";
 "settings.theme.label" = "Temă";
 "settings.theme.light" = "Luminos";
 "settings.theme.dark" = "Întunecat";
@@ -50,6 +51,7 @@
 "settings.language.romanian" = "Română";
 "settings.language.chinese_simplified" = "简体中文";
 "settings.language.chinese_traditional" = "繁體中文";
+"settings.language.japanese" = "日本語";
 
 /* Settings - Support Section */
 "settings.section.support" = "Susține";
@@ -68,3 +70,30 @@
 "tips.success.title" = "Mulțumesc! 💚";
 "tips.success.message" = "Sprijinul tău înseamnă totul!";
 "tips.error.title" = "Ceva nu a mers bine";
+"taskedit.title" = "Editează sarcina";
+"taskedit.button.save" = "Salvează";
+"taskedit.button.delete" = "Șterge sarcina";
+"taskresize.starttime.title" = "Ora de început";
+"taskresize.endtime.title" = "Ora de sfârșit";
+"taskresize.picker.conflict" = "Această oră se suprapune cu o altă sarcină";
+"taskschedule.button.remove" = "Elimină sarcina";
+"whatsnew.title" = "Noutăți";
+"whatsnew.version" = "Versiunea %@";
+"whatsnew.button.continue" = "Continuă";
+"whatsnew.1.4.feature1.title" = "Durate flexibile ale sarcinilor";
+"whatsnew.1.4.feature1.subtitle" = "Acum poți seta durata sarcinilor în intervale de 15, 30 și 45 de minute";
+"whatsnew.1.4.feature2.title" = "Culori noi pentru sarcini";
+"whatsnew.1.4.feature2.subtitle" = "Au fost adăugate opțiuni noi de culoare pentru a-ți personaliza sarcinile";
+"whatsnew.1.4.feature3.title" = "Suport pentru limba japoneză";
+"whatsnew.1.4.feature3.subtitle" = "Aplicația este acum disponibilă și în japoneză — Konnichiwa!";
+"howitworks.step1.title" = "Creează o sarcină";
+"howitworks.step1.subtitle" = "Atinge pictograma panoului pentru a deschide lista de sarcini, apoi adaugă prima sarcină cu +";
+"howitworks.step2.title" = "Planifică-ți ziua";
+"howitworks.step2.subtitle" = "Trage o sarcină din listă pe cronologie pentru a o programa";
+"howitworks.step3.title" = "Ajustează ora";
+"howitworks.step3.subtitle" = "Dacă vrei să ajustezi ora mai precis, trage marginile sau atinge ceasul pentru a alege ora exactă.";
+"howitworks.button.done" = "Începe";
+"settings.howitworks.title" = "Cum funcționează";
+"howitworks.button.next" = "Următorul";
+"whatsnew.1.5.feature1.title" = "Widget pentru ecranul principal";
+"whatsnew.1.5.feature1.subtitle" = "Planul tău zilnic, direct pe ecranul principal. Ține apăsat pe o zonă goală, atinge + și caută Daily Planner.";

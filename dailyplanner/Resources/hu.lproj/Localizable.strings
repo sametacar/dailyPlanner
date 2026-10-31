@@ -27,6 +27,7 @@
 /* Settings */
 "settings.title" = "Beállítások";
 "settings.section.appearance" = "Megjelenés";
+"settings.version.label" = "Verzió";
 "settings.theme.label" = "Téma";
 "settings.theme.light" = "Világos";
 "settings.theme.dark" = "Sötét";
@@ -50,6 +51,7 @@
 "settings.language.romanian" = "Română";
 "settings.language.chinese_simplified" = "简体中文";
 "settings.language.chinese_traditional" = "繁體中文";
+"settings.language.japanese" = "日本語";
 
 /* Settings - Support Section */
 "settings.section.support" = "Támogatás";
@@ -68,3 +70,30 @@
 "tips.success.title" = "Köszönöm! 💚";
 "tips.success.message" = "A támogatásod mindent jelent!";
 "tips.error.title" = "Valami elromlott";
+"taskedit.title" = "Feladat szerkesztése";
+"taskedit.button.save" = "Mentés";
+"taskedit.button.delete" = "Feladat törlése";
+"taskresize.starttime.title" = "Kezdési idő";
+"taskresize.endtime.title" = "Befejezési idő";
+"taskresize.picker.conflict" = "Ez az idő átfedésben van egy másik feladattal";
+"taskschedule.button.remove" = "Feladat eltávolítása";
+"whatsnew.title" = "Újdonságok";
+"whatsnew.version" = "Verzió %@";
+"whatsnew.button.continue" = "Folytatás";
+"whatsnew.1.4.feature1.title" = "Rugalmas feladatidőtartamok";
+"whatsnew.1.4.feature1.subtitle" = "A feladatok időtartamát most már 15, 30 és 45 perces lépésekben állíthatod be";
+"whatsnew.1.4.feature2.title" = "Új feladatszínek";
+"whatsnew.1.4.feature2.subtitle" = "Új színlehetőségek érkeztek a feladataid személyre szabásához";
+"whatsnew.1.4.feature3.title" = "Japán nyelvi támogatás";
+"whatsnew.1.4.feature3.subtitle" = "Az alkalmazás most már japánul is elérhető — Konnichiwa!";
+"howitworks.step1.title" = "Hozz létre egy feladatot";
+"howitworks.step1.subtitle" = "Koppints a panel ikonjára a feladatlista megnyitásához, majd add hozzá az első feladatot a + gombbal";
+"howitworks.step2.title" = "Tervezd meg a napod";
+"howitworks.step2.subtitle" = "Húzd a feladatot a listából az idővonalra a beütemezéshez";
+"howitworks.step3.title" = "Állítsd be az időt";
+"howitworks.step3.subtitle" = "Ha pontosabban szeretnéd beállítani az időt, húzd a széleket, vagy koppints az órára a pontos idő kiválasztásához.";
+"howitworks.button.done" = "Kezdés";
+"settings.howitworks.title" = "Hogyan működik";
+"howitworks.button.next" = "Következő";
+"whatsnew.1.5.feature1.title" = "Főképernyő-widget";
+"whatsnew.1.5.feature1.subtitle" = "A napi terved most már a főképernyőn. Tarts lenyomva egy üres területet, koppints a + gombra, és keresd meg a Daily Plannert.";

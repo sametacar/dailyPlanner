@@ -1,0 +1,39 @@
+<!doctype html>
+<html style="--n:1"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400..600&display=block" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  :root{--ink:#17345a;--clay:#c3784a}
+  .slide{background:linear-gradient(150deg, #f4efe6 0%, #ece3f2 48%, #dfe9f6 100%)}
+  .kicker{position:absolute;left:104px;top:184px;display:flex;align-items:center;gap:16px;z-index:4}
+  .kicker svg{width:46px;height:46px}
+  .kicker span{font:600 28px/1 Inter;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);opacity:.62}
+  .copy{top:286px;right:360px;z-index:4}
+  .h{font:500 126px/1.08 Fraunces;letter-spacing:-.01em;color:var(--ink)}
+  .h em{font-style:italic;font-weight:500;color:var(--clay)}
+  .sub{font:400 42px/1.4 Inter;letter-spacing:-.005em;color:color-mix(in srgb,var(--ink) 68%,transparent);margin-top:36px}
+  .deskshadow{position:absolute;left:560px;top:2740px;width:760px;height:160px;border-radius:50%;
+    background:radial-gradient(closest-side, rgba(23,52,90,.28), transparent 72%);filter:blur(6px);z-index:1}
+  .phone{left:520px;top:1200px;transform:rotate(-3.5deg);z-index:3}
+  .grain{opacity:.07}
+</style>
+<script src="../../screens/screens.js"></script>
+</head><body>
+
+<div class="slide" style="left:0">
+  <div class="kicker">
+    <svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="42" stroke="#17345a" stroke-width="6"/><path d="M50 28 V52 L68 64" stroke="#17345a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Daily Planner</span>
+  </div>
+  <div class="copy">
+    <div class="h">Plan your<br><em>day.</em></div>
+    <div class="sub">Hour by hour, kept simple.</div>
+  </div>
+  <div class="deskshadow"></div>
+  <div class="phone" data-src="iphone-17-2026-10-10-at-13-45-14" data-w="760"></div>
+  <div class="grain"></div>
+</div>
+
+<script src="shared.js"></script>
+</body></html>

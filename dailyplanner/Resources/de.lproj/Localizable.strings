@@ -27,6 +27,7 @@
 /* Settings */
 "settings.title" = "Einstellungen";
 "settings.section.appearance" = "Aussehen";
+"settings.version.label" = "Version";
 "settings.theme.label" = "Thema";
 "settings.theme.light" = "Hell";
 "settings.theme.dark" = "Dunkel";
@@ -50,6 +51,7 @@
 "settings.language.romanian" = "Română";
 "settings.language.chinese_simplified" = "简体中文";
 "settings.language.chinese_traditional" = "繁體中文";
+"settings.language.japanese" = "日本語";
 
 /* Settings - Support Section */
 "settings.section.support" = "Unterstützen";
@@ -68,3 +70,30 @@
 "tips.success.title" = "Vielen Dank! 💚";
 "tips.success.message" = "Deine Unterstützung bedeutet mir alles!";
 "tips.error.title" = "Etwas ist schief gelaufen";
+"taskedit.title" = "Aufgabe bearbeiten";
+"taskedit.button.save" = "Speichern";
+"taskedit.button.delete" = "Aufgabe löschen";
+"taskresize.starttime.title" = "Startzeit";
+"taskresize.endtime.title" = "Endzeit";
+"taskresize.picker.conflict" = "Diese Zeit überschneidet sich mit einer anderen Aufgabe";
+"taskschedule.button.remove" = "Aufgabe entfernen";
+"whatsnew.title" = "Neuigkeiten";
+"whatsnew.version" = "Version %@";
+"whatsnew.button.continue" = "Weiter";
+"whatsnew.1.4.feature1.title" = "Flexible Aufgabendauer";
+"whatsnew.1.4.feature1.subtitle" = "Du kannst die Dauer von Aufgaben jetzt in 15-, 30- und 45-Minuten-Schritten festlegen";
+"whatsnew.1.4.feature2.title" = "Neue Aufgabenfarben";
+"whatsnew.1.4.feature2.subtitle" = "Neue Farboptionen wurden hinzugefügt, um deine Aufgaben zu personalisieren";
+"whatsnew.1.4.feature3.title" = "Japanisch-Unterstützung";
+"whatsnew.1.4.feature3.subtitle" = "Die App ist jetzt auch auf Japanisch verfügbar — Konnichiwa!";
+"howitworks.step1.title" = "Aufgabe erstellen";
+"howitworks.step1.subtitle" = "Tippe auf das Panel-Symbol, um deine Aufgabenliste zu öffnen, und füge mit + deine erste Aufgabe hinzu";
+"howitworks.step2.title" = "Plane deinen Tag";
+"howitworks.step2.subtitle" = "Ziehe eine Aufgabe aus der Liste auf die Zeitleiste, um sie einzuplanen";
+"howitworks.step3.title" = "Passe die Zeit an";
+"howitworks.step3.subtitle" = "Wenn du die Zeit genauer einstellen möchtest, ziehe die Ränder oder tippe auf die Uhr, um die genaue Zeit zu wählen.";
+"howitworks.button.done" = "Loslegen";
+"settings.howitworks.title" = "So funktioniert's";
+"howitworks.button.next" = "Weiter";
+"whatsnew.1.5.feature1.title" = "Home-Bildschirm-Widget";
+"whatsnew.1.5.feature1.subtitle" = "Dein Tagesplan direkt auf dem Home-Bildschirm. Halte eine leere Stelle gedrückt, tippe auf + und suche nach Daily Planner.";

@@ -1,0 +1,5 @@
+/* Daily Planner widget */
+
+"widget.gallery.name" = "Günlük Plan";
+"widget.gallery.description" = "Günlük planını ve sırada ne olduğunu ana ekranında gör.";
+"widget.later" = "Sonra";

@@ -28,10 +28,14 @@
 "taskedit.title" = "Görevi Düzenle";
 "taskedit.button.save" = "Kaydet";
 "taskedit.button.delete" = "Görevi Sil";
+"taskresize.starttime.title" = "Başlangıç Saati";
+"taskresize.endtime.title" = "Bitiş Saati";
+"taskresize.picker.conflict" = "Bu saat başka bir görevle çakışıyor";
 
 /* Settings */
 "settings.title" = "Ayarlar";
 "settings.section.appearance" = "Görünüm";
+"settings.version.label" = "Sürüm";
 "settings.theme.label" = "Tema";
 "settings.theme.light" = "Açık";
 "settings.theme.dark" = "Koyu";
@@ -55,6 +59,7 @@
 "settings.language.romanian" = "Română";
 "settings.language.chinese_simplified" = "简体中文";
 "settings.language.chinese_traditional" = "繁體中文";
+"settings.language.japanese" = "日本語";
 
 /* Settings - Support Section */
 "settings.section.support" = "Destek";
@@ -73,3 +78,24 @@
 "tips.success.title" = "Teşekkürler! 💚";
 "tips.success.message" = "Desteğin benim için her şey demek!";
 "tips.error.title" = "Bir şeyler ters gitti";
+"taskschedule.button.remove" = "Görevi Kaldır";
+"whatsnew.title" = "Yenilikler";
+"whatsnew.version" = "Sürüm %@";
+"whatsnew.button.continue" = "Devam Et";
+"whatsnew.1.4.feature1.title" = "Esnek Görev Süreleri";
+"whatsnew.1.4.feature1.subtitle" = "Görev sürelerini artık 15, 30 ve 45 dakikalık dilimlerle ayarlayabilirsin";
+"whatsnew.1.4.feature2.title" = "Yeni Görev Renkleri";
+"whatsnew.1.4.feature2.subtitle" = "Görevlerini kişiselleştirmek için yeni renk seçenekleri eklendi";
+"whatsnew.1.4.feature3.title" = "Japonca Desteği";
+"whatsnew.1.4.feature3.subtitle" = "Uygulama artık Japonca da kullanılabiliyor — Konnichiwa!";
+"howitworks.step1.title" = "Görevini Oluştur";
+"howitworks.step1.subtitle" = "Sağ üstteki panel ikonuna dokunup görev listeni aç, sonra + ile ilk görevini ekle";
+"howitworks.step2.title" = "Gününü Planla";
+"howitworks.step2.subtitle" = "Oluşturduğun görevi listeden tutup zaman çizelgesine sürükle";
+"howitworks.step3.title" = "Zamanı Ayarla";
+"howitworks.step3.subtitle" = "Daha detaylı zaman ayarlamak istersen kenarları sürükle ya da saate dokunup tam zamanı seç.";
+"howitworks.button.done" = "Başla";
+"settings.howitworks.title" = "Nasıl Çalışır";
+"howitworks.button.next" = "Sonraki";
+"whatsnew.1.5.feature1.title" = "Ana Ekran Widget'ı";
+"whatsnew.1.5.feature1.subtitle" = "Günlük planın artık ana ekranında. Ana ekranda boş bir yere basılı tut, + simgesine dokun ve Daily Planner'ı ara.";

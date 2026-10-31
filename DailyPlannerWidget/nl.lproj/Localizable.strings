@@ -1,0 +1,5 @@
+/* Daily Planner widget */
+
+"widget.gallery.name" = "Dagplanning";
+"widget.gallery.description" = "Bekijk je dagplanning en wat er hierna komt op je beginscherm.";
+"widget.later" = "Later";

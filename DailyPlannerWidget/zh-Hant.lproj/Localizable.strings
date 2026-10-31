@@ -1,0 +1,5 @@
+/* Daily Planner widget */
+
+"widget.gallery.name" = "每日計畫";
+"widget.gallery.description" = "在主畫面上查看每日計畫和接下來的安排。";
+"widget.later" = "稍後";

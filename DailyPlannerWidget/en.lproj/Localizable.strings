@@ -1,0 +1,5 @@
+/* Daily Planner widget */
+
+"widget.gallery.name" = "Daily Plan";
+"widget.gallery.description" = "See your daily plan and what's coming up next on your Home Screen.";
+"widget.later" = "Later";

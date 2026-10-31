@@ -27,6 +27,7 @@
 /* Settings */
 "settings.title" = "Ustawienia";
 "settings.section.appearance" = "Wygląd";
+"settings.version.label" = "Wersja";
 "settings.theme.label" = "Motyw";
 "settings.theme.light" = "Jasny";
 "settings.theme.dark" = "Ciemny";
@@ -50,6 +51,7 @@
 "settings.language.romanian" = "Română";
 "settings.language.chinese_simplified" = "简体中文";
 "settings.language.chinese_traditional" = "繁體中文";
+"settings.language.japanese" = "日本語";
 
 /* Settings - Support Section */
 "settings.section.support" = "Wsparcie";
@@ -68,3 +70,30 @@
 "tips.success.title" = "Dziękuję! 💚";
 "tips.success.message" = "Twoje wsparcie znaczy wszystko!";
 "tips.error.title" = "Coś poszło nie tak";
+"taskedit.title" = "Edytuj zadanie";
+"taskedit.button.save" = "Zapisz";
+"taskedit.button.delete" = "Usuń zadanie";
+"taskresize.starttime.title" = "Czas rozpoczęcia";
+"taskresize.endtime.title" = "Czas zakończenia";
+"taskresize.picker.conflict" = "Ten czas nakłada się na inne zadanie";
+"taskschedule.button.remove" = "Usuń zadanie";
+"whatsnew.title" = "Nowości";
+"whatsnew.version" = "Wersja %@";
+"whatsnew.button.continue" = "Kontynuuj";
+"whatsnew.1.4.feature1.title" = "Elastyczny czas trwania zadań";
+"whatsnew.1.4.feature1.subtitle" = "Teraz możesz ustawiać czas trwania zadań w odstępach 15, 30 i 45 minut";
+"whatsnew.1.4.feature2.title" = "Nowe kolory zadań";
+"whatsnew.1.4.feature2.subtitle" = "Dodano nowe opcje kolorów, aby spersonalizować swoje zadania";
+"whatsnew.1.4.feature3.title" = "Wsparcie dla języka japońskiego";
+"whatsnew.1.4.feature3.subtitle" = "Aplikacja jest teraz dostępna także w języku japońskim — Konnichiwa!";
+"howitworks.step1.title" = "Utwórz zadanie";
+"howitworks.step1.subtitle" = "Stuknij ikonę panelu, aby otworzyć listę zadań, a następnie dodaj pierwsze zadanie za pomocą +";
+"howitworks.step2.title" = "Zaplanuj swój dzień";
+"howitworks.step2.subtitle" = "Przeciągnij zadanie z listy na oś czasu, aby je zaplanować";
+"howitworks.step3.title" = "Dostosuj czas";
+"howitworks.step3.subtitle" = "Jeśli chcesz dokładniej ustawić czas, przeciągnij krawędzie lub stuknij zegar, aby wybrać dokładny czas.";
+"howitworks.button.done" = "Rozpocznij";
+"settings.howitworks.title" = "Jak to działa";
+"howitworks.button.next" = "Dalej";
+"whatsnew.1.5.feature1.title" = "Widżet na ekranie początkowym";
+"whatsnew.1.5.feature1.subtitle" = "Twój plan dnia bezpośrednio na ekranie początkowym. Przytrzymaj puste miejsce, stuknij + i wyszukaj Daily Planner.";

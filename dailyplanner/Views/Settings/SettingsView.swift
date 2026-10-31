@@ -6,14 +6,50 @@
 //
 
 import SwiftUI
+import WhatsNewKit
 
 struct SettingsView: View {
     @Environment(ThemeManager.self) private var themeManager
     @Environment(\.openURL) private var openURL
+    @State private var manualWhatsNew: WhatsNew?
+    @State private var showHowItWorks = false
 
     var body: some View {
         Form {
                 Section {
+                    HStack {
+                        Text("settings.version.label".localized)
+                        Spacer()
+                        Text(appVersion)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    Button {
+                        manualWhatsNew = AppWhatsNew.latest
+                    } label: {
+                        HStack {
+                            Text("whatsnew.title".localized)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .tint(.primary)
+
+                    Button {
+                        showHowItWorks = true
+                    } label: {
+                        HStack {
+                            Text("settings.howitworks.title".localized)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .tint(.primary)
+
                     // Theme Picker
                     Picker("settings.theme.label".localized,
                            selection: Binding(
@@ -123,6 +159,14 @@ struct SettingsView: View {
             .navigationTitle("settings.title".localized)
             .preferredColorScheme(themeManager.currentMode.colorScheme)
             .id(themeManager.language.rawValue)
+            .sheet(whatsNew: $manualWhatsNew, layout: AppWhatsNew.layout)
+            .sheet(isPresented: $showHowItWorks) {
+                HowItWorksView {}
+            }
+    }
+
+    private var appVersion: String {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     }
 
     private func requestAppStoreReview() {

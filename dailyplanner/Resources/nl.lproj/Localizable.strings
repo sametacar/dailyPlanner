@@ -27,6 +27,7 @@
 /* Settings */
 "settings.title" = "Instellingen";
 "settings.section.appearance" = "Uiterlijk";
+"settings.version.label" = "Versie";
 "settings.theme.label" = "Thema";
 "settings.theme.light" = "Licht";
 "settings.theme.dark" = "Donker";
@@ -50,6 +51,7 @@
 "settings.language.romanian" = "Română";
 "settings.language.chinese_simplified" = "简体中文";
 "settings.language.chinese_traditional" = "繁體中文";
+"settings.language.japanese" = "日本語";
 
 /* Settings - Support Section */
 "settings.section.support" = "Ondersteuning";
@@ -68,3 +70,30 @@
 "tips.success.title" = "Bedankt! 💚";
 "tips.success.message" = "Jouw ondersteuning betekent alles!";
 "tips.error.title" = "Er is iets misgegaan";
+"taskedit.title" = "Taak bewerken";
+"taskedit.button.save" = "Opslaan";
+"taskedit.button.delete" = "Taak verwijderen";
+"taskresize.starttime.title" = "Starttijd";
+"taskresize.endtime.title" = "Eindtijd";
+"taskresize.picker.conflict" = "Deze tijd overlapt met een andere taak";
+"taskschedule.button.remove" = "Taak verwijderen";
+"whatsnew.title" = "Nieuw";
+"whatsnew.version" = "Versie %@";
+"whatsnew.button.continue" = "Doorgaan";
+"whatsnew.1.4.feature1.title" = "Flexibele taakduur";
+"whatsnew.1.4.feature1.subtitle" = "Je kunt de duur van taken nu instellen in stappen van 15, 30 en 45 minuten";
+"whatsnew.1.4.feature2.title" = "Nieuwe taakkleuren";
+"whatsnew.1.4.feature2.subtitle" = "Er zijn nieuwe kleuropties toegevoegd om je taken te personaliseren";
+"whatsnew.1.4.feature3.title" = "Japanse ondersteuning";
+"whatsnew.1.4.feature3.subtitle" = "De app is nu ook beschikbaar in het Japans — Konnichiwa!";
+"howitworks.step1.title" = "Maak een taak";
+"howitworks.step1.subtitle" = "Tik op het paneelpictogram om je takenlijst te openen en voeg je eerste taak toe met +";
+"howitworks.step2.title" = "Plan je dag";
+"howitworks.step2.subtitle" = "Sleep een taak van de lijst naar de tijdlijn om deze in te plannen";
+"howitworks.step3.title" = "Pas de tijd aan";
+"howitworks.step3.subtitle" = "Als je de tijd preciezer wilt instellen, sleep de randen, of tik op de klok om de exacte tijd te kiezen.";
+"howitworks.button.done" = "Aan de slag";
+"settings.howitworks.title" = "Hoe het werkt";
+"howitworks.button.next" = "Volgende";
+"whatsnew.1.5.feature1.title" = "Widget voor beginscherm";
+"whatsnew.1.5.feature1.subtitle" = "Je dagplanning, direct op je beginscherm. Houd een lege plek ingedrukt, tik op + en zoek naar Daily Planner.";

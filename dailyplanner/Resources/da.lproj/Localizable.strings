@@ -27,6 +27,7 @@
 /* Settings */
 "settings.title" = "Indstillinger";
 "settings.section.appearance" = "Udseende";
+"settings.version.label" = "Version";
 "settings.theme.label" = "Tema";
 "settings.theme.light" = "Lys";
 "settings.theme.dark" = "Mørk";
@@ -50,6 +51,7 @@
 "settings.language.romanian" = "Română";
 "settings.language.chinese_simplified" = "简体中文";
 "settings.language.chinese_traditional" = "繁體中文";
+"settings.language.japanese" = "日本語";
 
 /* Settings - Support Section */
 "settings.section.support" = "Støt";
@@ -68,3 +70,30 @@
 "tips.success.title" = "Tak! 💚";
 "tips.success.message" = "Din støtte betyder alt!";
 "tips.error.title" = "Noget gik galt";
+"taskedit.title" = "Rediger opgave";
+"taskedit.button.save" = "Gem";
+"taskedit.button.delete" = "Slet opgave";
+"taskresize.starttime.title" = "Starttidspunkt";
+"taskresize.endtime.title" = "Sluttidspunkt";
+"taskresize.picker.conflict" = "Dette tidspunkt overlapper en anden opgave";
+"taskschedule.button.remove" = "Fjern opgave";
+"whatsnew.title" = "Nyheder";
+"whatsnew.version" = "Version %@";
+"whatsnew.button.continue" = "Fortsæt";
+"whatsnew.1.4.feature1.title" = "Fleksibel opgavevarighed";
+"whatsnew.1.4.feature1.subtitle" = "Du kan nu indstille opgavevarighed i intervaller på 15, 30 og 45 minutter";
+"whatsnew.1.4.feature2.title" = "Nye opgavefarver";
+"whatsnew.1.4.feature2.subtitle" = "Nye farvemuligheder er tilføjet, så du kan tilpasse dine opgaver";
+"whatsnew.1.4.feature3.title" = "Japansk support";
+"whatsnew.1.4.feature3.subtitle" = "Appen er nu også tilgængelig på japansk — Konnichiwa!";
+"howitworks.step1.title" = "Opret en opgave";
+"howitworks.step1.subtitle" = "Tryk på panelikonet for at åbne din opgaveliste, og tilføj derefter din første opgave med +";
+"howitworks.step2.title" = "Planlæg din dag";
+"howitworks.step2.subtitle" = "Træk en opgave fra listen til tidslinjen for at planlægge den";
+"howitworks.step3.title" = "Juster tiden";
+"howitworks.step3.subtitle" = "Hvis du vil justere tiden mere præcist, så træk i kanterne, eller tryk på uret for at vælge det nøjagtige tidspunkt.";
+"howitworks.button.done" = "Kom i gang";
+"settings.howitworks.title" = "Sådan fungerer det";
+"howitworks.button.next" = "Næste";
+"whatsnew.1.5.feature1.title" = "Widget til hjemmeskærmen";
+"whatsnew.1.5.feature1.subtitle" = "Din dagsplan direkte på hjemmeskærmen. Hold fingeren på et tomt område, tryk på + og søg efter Daily Planner.";

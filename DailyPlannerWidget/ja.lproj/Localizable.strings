@@ -1,0 +1,5 @@
+/* Daily Planner widget */
+
+"widget.gallery.name" = "今日の予定";
+"widget.gallery.description" = "今日の予定と次の予定をホーム画面で確認できます。";
+"widget.later" = "このあと";

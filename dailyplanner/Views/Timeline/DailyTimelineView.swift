@@ -183,11 +183,12 @@ struct DailyTimelineView: View {
         lastHighlightComputeTime = now
 
         let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: now)
+        let components = calendar.dateComponents([.hour, .minute], from: now)
+        let nowTotalMinutes = (components.hour ?? 0) * 60 + (components.minute ?? 0)
 
-        if let current = todayTasks.first(where: { $0.startHour <= hour && hour < $0.endHour }) {
+        if let current = todayTasks.first(where: { $0.startTotalMinutes <= nowTotalMinutes && nowTotalMinutes < $0.endTotalMinutes }) {
             highlightedTaskId = current.id
-        } else if let next = todayTasks.filter({ $0.startHour > hour }).sorted(by: { $0.startHour < $1.startHour }).first {
+        } else if let next = todayTasks.filter({ $0.startTotalMinutes > nowTotalMinutes }).sorted(by: { $0.startTotalMinutes < $1.startTotalMinutes }).first {
             highlightedTaskId = next.id
         } else {
             highlightedTaskId = nil
@@ -240,17 +241,19 @@ struct DailyTimelineView: View {
     /// Calculate Y offset for task based on start hour
     private func calculateYOffset(for task: DayTaskModel) -> CGFloat {
         let slotHeight: CGFloat = 60
-        let firstHour = 6 // Timeline starts at 6:00
+        let firstHourMinutes = 6 * 60 // Timeline starts at 6:00
 
-        // Calculate slot index (0 for 6:00, 1 for 7:00, etc.)
-        let slotIndex = task.startHour >= firstHour
-            ? task.startHour - firstHour
-            : (24 - firstHour) + task.startHour
+        // Minutes from the timeline start (0 for 6:00, 60 for 7:00, etc.),
+        // wrapping around for tasks that start before 6:00.
+        let start = task.startTotalMinutes
+        let minutesFromStart = start >= firstHourMinutes
+            ? start - firstHourMinutes
+            : (24 * 60 - firstHourMinutes) + start
 
         // Small symmetric gap from the hour line, matching the equal gap
         // subtracted from the card's height so it sits centered/inset within
         // its slot instead of touching the hour lines above and below.
-        return CGFloat(slotIndex) * slotHeight + taskVerticalPadding
+        return CGFloat(minutesFromStart) / 60.0 * slotHeight + taskVerticalPadding
     }
 
     /// Calculate Y offset for current time indicator
@@ -275,16 +278,60 @@ struct DailyTimelineView: View {
         return CGFloat(slotIndex) * slotHeight + minuteOffset
     }
 
-    /// Create and save a new DayTaskModel from dropped task
+    /// Create and save a new DayTaskModel from dropped task, fitted into
+    /// whatever free time actually remains in the dropped hour.
     private func createDayTask(from transfer: TaskTransfer, at hour: Int) {
+        guard let range = fittedDropRange(forHour: hour) else {
+            print("Cannot place task at \(hour):00 - no free gap in that hour")
+            return
+        }
+
         let dayTask = DayTaskModel(
             from: transfer,
             date: viewModel.currentDate,
-            startHour: hour,
-            endHour: hour + 1
+            startHour: range.startMinutes / 60,
+            endHour: range.endMinutes / 60,
+            startMinute: range.startMinutes % 60,
+            endMinute: range.endMinutes % 60
         )
         modelContext.insert(dayTask)
-        print("DayTaskModel created: \(dayTask.name) at \(hour):00")
+        print("DayTaskModel created: \(dayTask.name) at \(range.startMinutes / 60):\(range.startMinutes % 60)")
+    }
+
+    /// Finds a conflict-free time range to place a newly dropped task in.
+    /// Returns the full hour when it's entirely empty; otherwise the
+    /// largest free gap inside that hour, so e.g. dropping onto an hour
+    /// that already has a 9:00-9:30 task fits the new task into the
+    /// remaining 9:30-10:00 instead of overlapping it. Returns nil if no
+    /// gap in that hour is big enough to be worth placing a task in.
+    private func fittedDropRange(forHour hour: Int) -> (startMinutes: Int, endMinutes: Int)? {
+        let hourStart = hour * 60
+        let hourEnd = hourStart + 60
+        let minGapMinutes = 15
+
+        let busyIntervals = todayTasks
+            .map { (max($0.startTotalMinutes, hourStart), min($0.endTotalMinutes, hourEnd)) }
+            .filter { $0.0 < $0.1 }
+            .sorted { $0.0 < $1.0 }
+
+        var gaps: [(Int, Int)] = []
+        var cursor = hourStart
+        for (busyStart, busyEnd) in busyIntervals {
+            if busyStart > cursor {
+                gaps.append((cursor, busyStart))
+            }
+            cursor = max(cursor, busyEnd)
+        }
+        if cursor < hourEnd {
+            gaps.append((cursor, hourEnd))
+        }
+
+        guard let largestGap = gaps
+            .filter({ $0.1 - $0.0 >= minGapMinutes })
+            .max(by: { ($0.1 - $0.0) < ($1.1 - $1.0) })
+        else { return nil }
+
+        return (largestGap.0, largestGap.1)
     }
 
     /// Entry point for the "copy yesterday" button. Decides whether to copy directly,
@@ -339,13 +386,25 @@ struct DayTaskCard: View {
     let isBulkDeleting: Bool
     @Environment(\.modelContext) private var modelContext
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(ThemeManager.self) private var themeManager
     @State private var isSelected = false
     @State private var showDeleteAlert = false
     @State private var isDeleting = false
     @State private var pulsedEpoch: Int = -1
     @State private var iconPulseScale: CGFloat = 1.0
+    @State private var activeResizeMode: ResizeMode?
+    @State private var liveResizeOffset: CGFloat = 0
+    @State private var showScheduleSheet = false
 
     private let slotHeight: CGFloat = 60
+    private let minuteStep = 15
+    private let minDurationMinutes = 15
+
+    // The inline schedule button wants ~56pt of vertical room (12 top +
+    // 36 circle + 8 bottom) to sit inset in the card's corner without
+    // crowding. Cards shorter than this skip selection/the button
+    // altogether - tapping them opens the schedule sheet directly instead.
+    private let minHeightForInlineScheduleButton: CGFloat = 56
 
     private var iconOpacity: Double {
         colorScheme == .light ? 0.55 : 0.42
@@ -364,22 +423,85 @@ struct DayTaskCard: View {
     }
 
     private var taskHeight: CGFloat {
-        let duration = task.endHour - task.startHour
-        return CGFloat(duration) * slotHeight - (taskVerticalPadding * 2)
+        CGFloat(task.durationMinutes) / 60.0 * slotHeight - (taskVerticalPadding * 2)
+    }
+
+    /// The main ZStack's locked content height (card height minus the two
+    /// 2pt spacers around it). Given explicitly to every conditional
+    /// selection overlay (resize handles, schedule button) below so none of
+    /// them can ask the ZStack for more room than this - that's what used
+    /// to make the card grow, clip its bottom handle, and push its text
+    /// down whenever a task got selected.
+    private var contentHeight: CGFloat {
+        taskHeight - (taskVerticalPadding * 2)
+    }
+
+    /// How much taller/shorter the card should look *right now*, while a
+    /// resize drag is in progress - tracks the raw (unsnapped) finger
+    /// translation 1:1 so the edge visibly follows the touch instead of
+    /// only updating once the gesture ends. Clamped so the card can't
+    /// visually collapse past the minimum duration.
+    private var liveHeightDelta: CGFloat {
+        guard let mode = activeResizeMode else { return 0 }
+        let rawDelta = mode == .top ? -liveResizeOffset : liveResizeOffset
+        let minContentHeight = CGFloat(minDurationMinutes) / 60.0 * slotHeight - (taskVerticalPadding * 4)
+        return max(rawDelta, minContentHeight - contentHeight)
+    }
+
+    /// Vertical shift applied while dragging the top handle, so the top
+    /// edge moves with the finger while the bottom edge stays put (the
+    /// bottom handle needs no shift - it grows downward in place).
+    private var liveOffsetY: CGFloat {
+        activeResizeMode == .top ? -liveHeightDelta : 0
+    }
+
+    private var liveContentHeight: CGFloat { contentHeight + liveHeightDelta }
+    private var liveTaskHeight: CGFloat { taskHeight + liveHeightDelta }
+
+    /// The clock button that opens the schedule sheet. Shared between its
+    /// two placements: inset in the card's corner (tall cards) and floating
+    /// above the card (short cards - see `minHeightForInlineScheduleButton`).
+    private var scheduleButton: some View {
+        // .buttonStyle(.glass) is iOS 26+ only; the app's deployment target
+        // is 17.6, so pre-26 devices fall back to a plain material circle.
+        Group {
+            if #available(iOS 26.0, *) {
+                Button(action: {
+                    showScheduleSheet = true
+                }) {
+                    Image(systemName: "clock.fill")
+                        .font(.system(size: 18))
+                        .foregroundStyle(.primary)
+                        .padding(6)
+                }
+                .buttonStyle(.glass)
+                .buttonBorderShape(.circle)
+            } else {
+                Button(action: {
+                    showScheduleSheet = true
+                }) {
+                    Image(systemName: "clock.fill")
+                        .font(.system(size: 18))
+                        .foregroundStyle(.primary)
+                        .padding(6)
+                        .background(.ultraThinMaterial, in: Circle())
+                }
+            }
+        }
     }
 
     private var taskFontSize: CGFloat {
-        let duration = task.endHour - task.startHour
+        let duration = task.durationMinutes
         let baseSize: CGFloat = 14
 
         switch duration {
-        case 1:
+        case ..<75: // ~1h bucket
             return baseSize // 1x
-        case 2:
+        case ..<135: // ~2h bucket
             return baseSize * 1.25 // 1.25x
-        case 3:
+        case ..<195: // ~3h bucket
             return baseSize * 1.5 // 1.5x
-        default: // 4+
+        default: // 4h+ bucket
             return baseSize * 2.0 // 2x
         }
     }
@@ -404,14 +526,29 @@ struct DayTaskCard: View {
                 if isSelected {
                     VStack {
                         ResizeHandle(position: .top)
-                            .gesture(
-                                DragGesture()
+                            .highPriorityGesture(
+                                DragGesture(minimumDistance: 2, coordinateSpace: .global)
+                                    .onChanged { value in
+                                        activeResizeMode = .top
+                                        liveResizeOffset = value.translation.height
+                                    }
                                     .onEnded { value in
-                                        applyResize(mode: .top, offset: value.translation.height)
+                                        withAnimation(.easeOut(duration: 0.15)) {
+                                            applyResize(mode: .top, offset: value.translation.height)
+                                            activeResizeMode = nil
+                                        }
                                     }
                             )
+                            .overlay(alignment: .top) {
+                                if activeResizeMode == .top {
+                                    TimeBadge(text: liveBadgeText)
+                                        .offset(y: -28)
+                                        .transition(.opacity)
+                                }
+                            }
                         Spacer()
                     }
+                    .frame(height: liveContentHeight)
                 }
 
                 // Bottom resize handle (inside the card)
@@ -419,54 +556,53 @@ struct DayTaskCard: View {
                     VStack {
                         Spacer()
                         ResizeHandle(position: .bottom)
-                            .gesture(
-                                DragGesture()
+                            .highPriorityGesture(
+                                DragGesture(minimumDistance: 2, coordinateSpace: .global)
+                                    .onChanged { value in
+                                        activeResizeMode = .bottom
+                                        liveResizeOffset = value.translation.height
+                                    }
                                     .onEnded { value in
-                                        applyResize(mode: .bottom, offset: value.translation.height)
+                                        withAnimation(.easeOut(duration: 0.15)) {
+                                            applyResize(mode: .bottom, offset: value.translation.height)
+                                            activeResizeMode = nil
+                                        }
                                     }
                             )
+                            .overlay(alignment: .bottom) {
+                                if activeResizeMode == .bottom {
+                                    TimeBadge(text: liveBadgeText)
+                                        .offset(y: 28)
+                                        .transition(.opacity)
+                                }
+                            }
                     }
+                    .frame(height: liveContentHeight)
                 }
 
-                // Delete button (only when selected)
+                // Schedule button (edit start/end time + delete, only when
+                // selected - short tasks never reach this state, see
+                // onTapGesture below)
                 if isSelected {
                     VStack {
                         HStack {
                             Spacer()
-                            Button(action: {
-                                showDeleteAlert = true
-                            }) {
-                                Image(systemName: "trash.fill")
-                                    .font(.system(size: 13))
-                                    .foregroundStyle(.white)
-                                    .padding(9)
-                                    .background(
-                                        ZStack {
-                                            Color.black.opacity(0.4)
-                                            LinearGradient(
-                                                colors: [
-                                                    Color.white.opacity(0.15),
-                                                    Color.clear
-                                                ],
-                                                startPoint: .topLeading,
-                                                endPoint: .bottomTrailing
-                                            )
-                                        }
-                                    )
-                                    .clipShape(Circle())
-                                    .overlay(
-                                        Circle()
-                                            .stroke(Color.white.opacity(0.3), lineWidth: 1)
-                                    )
-                                    .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
-                            }
-                            .padding(8)
+                            scheduleButton
+                                .padding(.horizontal, 8)
+                                .padding(.top, 12)
+                                .padding(.bottom, 8)
                         }
                         Spacer()
                     }
+                    .frame(height: liveContentHeight)
                 }
             }
-            .frame(maxHeight: .infinity)
+            .animation(.easeOut(duration: 0.12), value: activeResizeMode)
+            // Every selection overlay above is already pinned to
+            // contentHeight, so this never has to resolve a size conflict -
+            // it's just the explicit frame the background below fills.
+            .frame(height: liveContentHeight)
+            .clipped()
             .background(
                 ZStack {
                     // Base color with transparency for glass effect
@@ -569,14 +705,35 @@ struct DayTaskCard: View {
             .shadow(color: Color(hex: task.color).opacity(0.25), radius: 8, x: 0, y: 4)
             .shadow(color: Color.white.opacity(0.08), radius: 2, x: 0, y: -1)
             .onTapGesture {
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    isSelected.toggle()
+                // Short tasks can't fit the inline schedule button/resize
+                // handles cleanly, so skip selection entirely and jump
+                // straight to the schedule sheet.
+                if taskHeight < minHeightForInlineScheduleButton {
+                    showScheduleSheet = true
+                } else {
+                    withAnimation(.easeInOut(duration: 0.2)) {
+                        isSelected.toggle()
+                    }
                 }
             }
 
             Spacer().frame(height: 2)
         }
-        .frame(height: taskHeight)
+        .frame(height: liveTaskHeight)
+        // Prevents the selection UI (resize handles, delete button) from
+        // visually growing the card taller than its real duration on very
+        // short tasks, where those controls would otherwise want more space
+        // than the card's actual height - that would misrepresent the time span.
+        // Uses a rounded clip shape (matching the card's own corner radius)
+        // rather than a plain rectangular .clipped() - a rectangular clip
+        // slices off the rounded corners whenever the selection UI pushes
+        // content flush against the frame's edge, making the card look
+        // square right at the moment it's tapped.
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        // Shifts the whole card while the top handle is being dragged, so
+        // the bottom edge stays anchored and only the top edge (and the
+        // handle on it) tracks the finger - see liveOffsetY.
+        .offset(y: liveOffsetY)
         .padding(.leading, 73) // Time label width (60) + spacing (12) + divider (1)
         .padding(.trailing, 8)
         .opacity(isDeleting ? 0.0 : 1.0)
@@ -590,6 +747,14 @@ struct DayTaskCard: View {
                 isDeleting = true
             }
         }
+        .onChange(of: showScheduleSheet) { _, isShowing in
+            // Once the schedule sheet closes (Save or Cancel - both just
+            // dismiss it), deselect the task so its resize handles disappear
+            // instead of lingering after the user is done editing.
+            if !isShowing {
+                isSelected = false
+            }
+        }
         .alert("Delete Task", isPresented: $showDeleteAlert) {
             Button("Cancel", role: .cancel) {}
             Button("Delete", role: .destructive) {
@@ -598,25 +763,79 @@ struct DayTaskCard: View {
         } message: {
             Text("Are you sure you want to delete '\(task.name)'?")
         }
+        .sheet(isPresented: $showScheduleSheet) {
+            TaskScheduleSheet(
+                taskName: task.name,
+                initialStartHour: task.startHour,
+                initialStartMinute: task.startMinute,
+                initialEndHour: task.endHour,
+                initialEndMinute: task.endMinute,
+                isValidRange: { startHour, startMinute, endHour, endMinute in
+                    isValidRange(startHour: startHour, startMinute: startMinute, endHour: endHour, endMinute: endMinute)
+                },
+                onSave: { startHour, startMinute, endHour, endMinute in
+                    commitRange(startHour: startHour, startMinute: startMinute, endHour: endHour, endMinute: endMinute)
+                },
+                onDelete: {
+                    showScheduleSheet = false
+                    showDeleteAlert = true
+                }
+            )
+        }
     }
 
-    private func applyResize(mode: ResizeMode, offset: CGFloat) {
-        let slotChange = Int(round(offset / slotHeight))
+    private func isValidRange(startHour: Int, startMinute: Int, endHour: Int, endMinute: Int) -> Bool {
+        let start = startHour * 60 + startMinute
+        let end = endHour * 60 + endMinute
+        guard start >= 0, end <= 24 * 60, end - start >= minDurationMinutes else { return false }
+        return canResize(newStartTotalMinutes: start, newEndTotalMinutes: end)
+    }
+
+    private func commitRange(startHour: Int, startMinute: Int, endHour: Int, endMinute: Int) {
+        guard isValidRange(startHour: startHour, startMinute: startMinute, endHour: endHour, endMinute: endMinute) else { return }
+        task.startHour = startHour
+        task.startMinute = startMinute
+        task.endHour = endHour
+        task.endMinute = endMinute
+    }
+
+    /// Snaps a drag offset to the nearest 15-minute step and clamps it against
+    /// the opposite edge (respecting the minimum duration) and the day bounds.
+    /// Shared by applyResize (commit) and liveBadgeText (live preview) so the
+    /// two can never drift out of sync.
+    private func previewTotalMinutes(mode: ResizeMode, offset: CGFloat) -> Int {
+        let rawMinuteChange = Int(round(offset / slotHeight * 60))
+        let minuteChange = Int(round(Double(rawMinuteChange) / Double(minuteStep))) * minuteStep
 
         switch mode {
         case .top:
-            let newStartHour = max(0, min(23, task.startHour + slotChange))
-            if newStartHour < task.endHour && canResize(newStartHour: newStartHour, newEndHour: task.endHour) {
-                task.startHour = newStartHour
-                print("Task resized: \(task.name) now starts at \(newStartHour):00")
+            let candidate = task.startTotalMinutes + minuteChange
+            let clamped = max(0, min(task.endTotalMinutes - minDurationMinutes, candidate))
+            return (clamped / minuteStep) * minuteStep
+        case .bottom:
+            let candidate = task.endTotalMinutes + minuteChange
+            let clamped = min(24 * 60, max(task.startTotalMinutes + minDurationMinutes, candidate))
+            return (clamped / minuteStep) * minuteStep
+        }
+    }
+
+    private func applyResize(mode: ResizeMode, offset: CGFloat) {
+        let snapped = previewTotalMinutes(mode: mode, offset: offset)
+
+        switch mode {
+        case .top:
+            if canResize(newStartTotalMinutes: snapped, newEndTotalMinutes: task.endTotalMinutes) {
+                task.startHour = snapped / 60
+                task.startMinute = snapped % 60
+                print("Task resized: \(task.name) now starts at \(snapped / 60):\(snapped % 60)")
             } else {
                 print("Cannot resize: would overlap with another task")
             }
         case .bottom:
-            let newEndHour = max(0, min(24, task.endHour + slotChange))
-            if newEndHour > task.startHour && canResize(newStartHour: task.startHour, newEndHour: newEndHour) {
-                task.endHour = newEndHour
-                print("Task resized: \(task.name) now ends at \(newEndHour):00")
+            if canResize(newStartTotalMinutes: task.startTotalMinutes, newEndTotalMinutes: snapped) {
+                task.endHour = snapped / 60
+                task.endMinute = snapped % 60
+                print("Task resized: \(task.name) now ends at \(snapped / 60):\(snapped % 60)")
             } else {
                 print("Cannot resize: would overlap with another task")
             }
@@ -624,7 +843,7 @@ struct DayTaskCard: View {
     }
 
     /// Check if resizing to the new time range would cause a conflict with other tasks
-    private func canResize(newStartHour: Int, newEndHour: Int) -> Bool {
+    private func canResize(newStartTotalMinutes: Int, newEndTotalMinutes: Int) -> Bool {
         // Check if any other task overlaps with the proposed time range
         let hasConflict = allTasks.contains { otherTask in
             // Skip checking against self
@@ -632,10 +851,17 @@ struct DayTaskCard: View {
 
             // Two time ranges overlap if:
             // range1.start < range2.end AND range1.end > range2.start
-            return newStartHour < otherTask.endHour && newEndHour > otherTask.startHour
+            return newStartTotalMinutes < otherTask.endTotalMinutes && newEndTotalMinutes > otherTask.startTotalMinutes
         }
 
         return !hasConflict
+    }
+
+    /// Live time text shown in the floating badge while a resize drag is active.
+    private var liveBadgeText: String {
+        guard let mode = activeResizeMode else { return "" }
+        let minutes = previewTotalMinutes(mode: mode, offset: liveResizeOffset)
+        return themeManager.formattedTime(hour: minutes / 60, minute: minutes % 60)
     }
 
     private func deleteTask() {
@@ -653,8 +879,28 @@ struct DayTaskCard: View {
     }
 }
 
-enum ResizeMode {
+enum ResizeMode: Equatable {
     case top, bottom
+}
+
+/// Floating time readout shown next to a resize handle while dragging, so the
+/// user can see exactly which 15-minute mark they're about to snap to.
+struct TimeBadge: View {
+    let text: String
+
+    var body: some View {
+        Text(text)
+            .font(.system(size: 12, weight: .semibold))
+            .foregroundStyle(.white)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 5)
+            .background(
+                Capsule()
+                    .fill(Color.black.opacity(0.75))
+                    .overlay(Capsule().stroke(Color.white.opacity(0.3), lineWidth: 1))
+            )
+            .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
+    }
 }
 
 /// Handle view for resizing tasks
@@ -662,36 +908,24 @@ struct ResizeHandle: View {
     let position: ResizeMode
 
     var body: some View {
-        VStack(spacing: 3) {
-            Capsule()
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            Color.white.opacity(0.9),
-                            Color.white.opacity(0.6)
-                        ],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
+        Capsule()
+            .fill(
+                LinearGradient(
+                    colors: [
+                        Color.white.opacity(0.9),
+                        Color.white.opacity(0.6)
+                    ],
+                    startPoint: .leading,
+                    endPoint: .trailing
                 )
-                .frame(width: 32, height: 3.5)
-                .shadow(color: .white.opacity(0.3), radius: 2, x: 0, y: 0)
-            Capsule()
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            Color.white.opacity(0.9),
-                            Color.white.opacity(0.6)
-                        ],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
-                .frame(width: 32, height: 3.5)
-                .shadow(color: .white.opacity(0.3), radius: 2, x: 0, y: 0)
-        }
-        .padding(.vertical, 6)
-        .contentShape(Rectangle().size(width: 50, height: 24))
+            )
+            .frame(width: 32, height: 3.5)
+            .shadow(color: .white.opacity(0.3), radius: 2, x: 0, y: 0)
+            // contentShape below already gives this a generous 50x24 drag
+            // target independent of layout size, so no vertical padding is
+            // needed here - padding would only inflate the handle's real
+            // layout height, forcing the selected card to visually grow.
+            .contentShape(Rectangle().size(width: 50, height: 24))
     }
 }
 

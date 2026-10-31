@@ -15,14 +15,14 @@ struct TaskAddSheetView: View {
     let taskToEdit: TaskModel?
 
     @State private var name: String = ""
-    @State private var color: String = "#4A90E2"
+    @State private var color: String = "#85B8FF"
     @State private var icon: String?
     @State private var showDeleteConfirmation = false
 
     init(taskToEdit: TaskModel? = nil) {
         self.taskToEdit = taskToEdit
         _name = State(initialValue: taskToEdit?.name ?? "")
-        _color = State(initialValue: taskToEdit?.color ?? "#4A90E2")
+        _color = State(initialValue: taskToEdit?.color ?? "#85B8FF")
         _icon = State(initialValue: taskToEdit?.icon)
     }
 

@@ -1,0 +1,41 @@
+<!doctype html>
+<html style="--n:1"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500..700&family=Caveat:wght@600;700&display=block" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  :root{--ink:#163a63;--coral:#ff7a59;--tape:#ffd877}
+  .slide{background:
+      radial-gradient(1200px 820px at 82% 6%, rgba(255,255,255,.55), transparent 62%),
+      linear-gradient(158deg, #ffe3c7 0%, #fbd9e6 46%, #e9defa 100%)}
+  .badge{position:absolute;left:96px;top:116px;width:88px;height:88px;border-radius:26px;overflow:hidden;
+    box-shadow:0 18px 30px -12px rgba(22,58,99,.35);background:#fff;z-index:5}
+  .badge img{width:100%;height:100%;display:block}
+  .copy{top:238px;z-index:4}
+  .h{font:600 136px/1.04 Fredoka;letter-spacing:-.01em;color:var(--ink)}
+  .h .hl{position:relative;display:inline-block;color:var(--ink)}
+  .h .hl svg{position:absolute;left:-10%;top:-16%;width:120%;height:140%;overflow:visible}
+  .sub{font:700 58px/1.3 Caveat;color:var(--ink);margin-top:30px;transform:rotate(-1.6deg);transform-origin:left}
+  .tape{font:700 46px/1 Fredoka;letter-spacing:.02em;text-transform:uppercase;height:108px;padding:0 26px;gap:26px;
+    background:var(--tape);color:var(--ink);box-shadow:0 26px 50px -16px rgba(22,58,99,.4);z-index:2}
+  .phone{left:230px;top:966px;z-index:3}
+  .grain{opacity:.05}
+</style>
+<script src="../../screens/screens.js"></script>
+</head><body>
+
+<div class="slide" style="left:0">
+  <div class="badge"><img src="../../assets/brand/icon.png" alt=""></div>
+  <div class="tape" style="left:-280px;top:2360px;width:1750px;transform:rotate(-25deg)">Plan <i>✦</i> Focus <i>✦</i> Done <i>✦</i> Plan <i>✦</i> Focus <i>✦</i> Done</div>
+  <div class="copy">
+    <div class="h">Plan your<br><span class="hl">day.
+      <svg viewBox="0 0 300 140" fill="none"><path d="M12 90 C 40 10, 230 4, 272 60 C 300 98, 230 134, 140 128 C 48 122, -4 96, 20 56" stroke="#ff7a59" stroke-width="9" stroke-linecap="round"/></svg>
+    </span></div>
+    <div class="sub">Hour by hour, kept simple.</div>
+  </div>
+  <div class="phone" data-src="iphone-17-2026-10-10-at-13-45-14" data-w="900"></div>
+  <div class="grain"></div>
+</div>
+
+<script src="shared.js"></script>
+</body></html>

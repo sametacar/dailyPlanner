@@ -29,7 +29,9 @@ enum DayPlanCopier {
                 icon: task.icon,
                 date: targetDate,
                 startHour: task.startHour,
-                endHour: task.endHour
+                endHour: task.endHour,
+                startMinute: task.startMinute,
+                endMinute: task.endMinute
             )
             modelContext.insert(copy)
         }

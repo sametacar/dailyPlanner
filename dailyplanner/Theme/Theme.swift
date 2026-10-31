@@ -33,6 +33,7 @@ enum LanguageMode: String, CaseIterable {
     case chineseTraditional = "zh-Hant"
     case danish = "da"
     case norwegian = "nb"
+    case japanese = "ja"
     /*
     case polish = "pl"
     case french = "fr"
@@ -63,6 +64,8 @@ enum LanguageMode: String, CaseIterable {
             return "settings.language.danish".localized
         case .norwegian:
              return "settings.language.norwegian".localized
+        case .japanese:
+            return "settings.language.japanese".localized
        /*
         case .polish:
             return "settings.language.polish".localized
@@ -171,6 +174,8 @@ class ThemeManager {
                 self.language = .danish
             case "nb", "no":
                  self.language = .norwegian
+            case "ja":
+                self.language = .japanese
             case "zh":
                 // Detect if Traditional or Simplified based on region
                 let region = Locale.current.region?.identifier ?? ""
@@ -227,6 +232,23 @@ class ThemeManager {
             }
         case .twentyFourHour:
             return String(format: "%02d:00", hour)
+        }
+    }
+
+    func formattedTime(hour: Int, minute: Int) -> String {
+        switch timeFormat {
+        case .twelveHour:
+            if hour == 0 {
+                return String(format: "12:%02d AM", minute)
+            } else if hour < 12 {
+                return String(format: "%d:%02d AM", hour, minute)
+            } else if hour == 12 {
+                return String(format: "12:%02d PM", minute)
+            } else {
+                return String(format: "%d:%02d PM", hour - 12, minute)
+            }
+        case .twentyFourHour:
+            return String(format: "%02d:%02d", hour, minute)
         }
     }
 }

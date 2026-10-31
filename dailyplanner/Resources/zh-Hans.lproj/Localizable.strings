@@ -28,10 +28,14 @@
 "taskedit.title" = "编辑任务";
 "taskedit.button.save" = "保存";
 "taskedit.button.delete" = "删除任务";
+"taskresize.starttime.title" = "开始时间";
+"taskresize.endtime.title" = "结束时间";
+"taskresize.picker.conflict" = "该时间与其他任务冲突";
 
 /* Settings */
 "settings.title" = "设置";
 "settings.section.appearance" = "外观";
+"settings.version.label" = "版本";
 "settings.theme.label" = "主题";
 "settings.theme.light" = "浅色";
 "settings.theme.dark" = "深色";
@@ -55,6 +59,7 @@
 "settings.language.romanian" = "Română";
 "settings.language.chinese_simplified" = "简体中文";
 "settings.language.chinese_traditional" = "繁體中文";
+"settings.language.japanese" = "日本語";
 
 /* Settings - Support Section */
 "settings.section.support" = "支持";
@@ -73,3 +78,24 @@
 "tips.success.title" = "谢谢你！💚";
 "tips.success.message" = "你的支持对我意义重大！";
 "tips.error.title" = "出了点问题";
+"taskschedule.button.remove" = "移除任务";
+"whatsnew.title" = "新功能";
+"whatsnew.version" = "版本 %@";
+"whatsnew.button.continue" = "继续";
+"whatsnew.1.4.feature1.title" = "灵活的任务时长";
+"whatsnew.1.4.feature1.subtitle" = "现在可以按 15、30、45 分钟为单位设置任务时长";
+"whatsnew.1.4.feature2.title" = "全新任务颜色";
+"whatsnew.1.4.feature2.subtitle" = "新增了多种颜色选项，让你的任务更具个性";
+"whatsnew.1.4.feature3.title" = "日语支持";
+"whatsnew.1.4.feature3.subtitle" = "应用现已支持日语 — こんにちは!";
+"howitworks.step1.title" = "创建任务";
+"howitworks.step1.subtitle" = "点击面板图标打开任务列表，然后用 + 添加你的第一个任务";
+"howitworks.step2.title" = "规划你的一天";
+"howitworks.step2.subtitle" = "将任务从列表拖到时间轴上进行安排";
+"howitworks.step3.title" = "调整时间";
+"howitworks.step3.subtitle" = "如果想更精确地调整时间，可以拖动边缘，或点击时钟图标选择精确时间。";
+"howitworks.button.done" = "开始使用";
+"settings.howitworks.title" = "使用说明";
+"howitworks.button.next" = "下一步";
+"whatsnew.1.5.feature1.title" = "主屏幕小组件";
+"whatsnew.1.5.feature1.subtitle" = "每日计划直接显示在主屏幕上。长按空白处，轻点 +，然后搜索 Daily Planner。";

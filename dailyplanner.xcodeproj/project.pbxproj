@@ -7,15 +7,69 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C19EEB9305FF3C600454938 /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C19EEB8305FF3C600454938 /* WhatsNewKit */; };
 		3C1A57EB2F2BFC1E0044E098 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1A57EA2F2BFC1E0044E098 /* StoreKit.framework */; };
+		3C314568308E93AC0059BE34 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C314567308E93AC0059BE34 /* WidgetKit.framework */; };
+		3C31456A308E93AC0059BE34 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C314569308E93AC0059BE34 /* SwiftUI.framework */; };
+		3C314575308E93AE0059BE34 /* DailyPlannerWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3C314566308E93AC0059BE34 /* DailyPlannerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3C314573308E93AE0059BE34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C4D9C512F228F60006F0152 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C314565308E93AC0059BE34;
+			remoteInfo = DailyPlannerWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3C314576308E93AE0059BE34 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3C314575308E93AE0059BE34 /* DailyPlannerWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3C1A57EA2F2BFC1E0044E098 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3C314566308E93AC0059BE34 /* DailyPlannerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyPlannerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C314567308E93AC0059BE34 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		3C314569308E93AC0059BE34 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		3C4D9C592F228F60006F0152 /* dailyplanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dailyplanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3C314579308E93AE0059BE34 /* Exceptions for "DailyPlannerWidget" folder in "DailyPlannerWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 3C314565308E93AC0059BE34 /* DailyPlannerWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		3C31456B308E93AC0059BE34 /* DailyPlannerWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3C314579308E93AE0059BE34 /* Exceptions for "DailyPlannerWidget" folder in "DailyPlannerWidgetExtension" target */,
+			);
+			path = DailyPlannerWidget;
+			sourceTree = "<group>";
+		};
+		3C31458A308E93AE0059BE34 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		3C4D9C5B2F228F60006F0152 /* dailyplanner */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = dailyplanner;
@@ -24,10 +78,20 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3C314563308E93AC0059BE34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C31456A308E93AC0059BE34 /* SwiftUI.framework in Frameworks */,
+				3C314568308E93AC0059BE34 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3C4D9C562F228F60006F0152 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C19EEB9305FF3C600454938 /* WhatsNewKit in Frameworks */,
 				3C1A57EB2F2BFC1E0044E098 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				3C1A57EA2F2BFC1E0044E098 /* StoreKit.framework */,
+				3C314567308E93AC0059BE34 /* WidgetKit.framework */,
+				3C314569308E93AC0059BE34 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -47,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				3C4D9C5B2F228F60006F0152 /* dailyplanner */,
+				3C31456B308E93AC0059BE34 /* DailyPlannerWidget */,
+				3C31458A308E93AE0059BE34 /* Shared */,
 				3C1A57E92F2BFC1E0044E098 /* Frameworks */,
 				3C4D9C5A2F228F60006F0152 /* Products */,
 			);
@@ -56,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				3C4D9C592F228F60006F0152 /* dailyplanner.app */,
+				3C314566308E93AC0059BE34 /* DailyPlannerWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -63,6 +132,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3C314565308E93AC0059BE34 /* DailyPlannerWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C31457A308E93AE0059BE34 /* Build configuration list for PBXNativeTarget "DailyPlannerWidgetExtension" */;
+			buildPhases = (
+				3C314562308E93AC0059BE34 /* Sources */,
+				3C314563308E93AC0059BE34 /* Frameworks */,
+				3C314564308E93AC0059BE34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3C31456B308E93AC0059BE34 /* DailyPlannerWidget */,
+				3C31458A308E93AE0059BE34 /* Shared */,
+			);
+			name = DailyPlannerWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = DailyPlannerWidgetExtension;
+			productReference = 3C314566308E93AC0059BE34 /* DailyPlannerWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		3C4D9C582F228F60006F0152 /* dailyplanner */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C4D9C662F228F63006F0152 /* Build configuration list for PBXNativeTarget "dailyplanner" */;
@@ -70,16 +162,20 @@
 				3C4D9C552F228F60006F0152 /* Sources */,
 				3C4D9C562F228F60006F0152 /* Frameworks */,
 				3C4D9C572F228F60006F0152 /* Resources */,
+				3C314576308E93AE0059BE34 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3C314574308E93AE0059BE34 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
+				3C31458A308E93AE0059BE34 /* Shared */,
 				3C4D9C5B2F228F60006F0152 /* dailyplanner */,
 			);
 			name = dailyplanner;
 			packageProductDependencies = (
+				3C19EEB8305FF3C600454938 /* WhatsNewKit */,
 			);
 			productName = dailyplanner;
 			productReference = 3C4D9C592F228F60006F0152 /* dailyplanner.app */;
@@ -95,6 +191,9 @@
 				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
+					3C314565308E93AC0059BE34 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
 					3C4D9C582F228F60006F0152 = {
 						CreatedOnToolsVersion = 26.1.1;
 					};
@@ -120,20 +219,32 @@
 				ro,
 				"zh-Hans",
 				"zh-Hant",
+				ja,
 			);
 			mainGroup = 3C4D9C502F228F60006F0152;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3C19EEB7305FF3C600454938 /* XCRemoteSwiftPackageReference "WhatsNewKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3C4D9C5A2F228F60006F0152 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				3C4D9C582F228F60006F0152 /* dailyplanner */,
+				3C314565308E93AC0059BE34 /* DailyPlannerWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3C314564308E93AC0059BE34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3C4D9C572F228F60006F0152 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -144,6 +255,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3C314562308E93AC0059BE34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3C4D9C552F228F60006F0152 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -153,7 +271,79 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3C314574308E93AE0059BE34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C314565308E93AC0059BE34 /* DailyPlannerWidgetExtension */;
+			targetProxy = 3C314573308E93AE0059BE34 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		3C314577308E93AE0059BE34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DailyPlannerWidget/DailyPlannerWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 53X35M56GW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyPlannerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Daily Planner";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acar.dailyplanner.DailyPlannerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3C314578308E93AE0059BE34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = DailyPlannerWidget/DailyPlannerWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 53X35M56GW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DailyPlannerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Daily Planner";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.acar.dailyplanner.DailyPlannerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		3C4D9C642F228F63006F0152 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -280,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = dailyplanner/dailyplanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 53X35M56GW;
@@ -296,7 +487,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.acar.dailyplanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -314,6 +505,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = dailyplanner/dailyplanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 53X35M56GW;
@@ -330,7 +522,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.acar.dailyplanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -346,6 +538,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3C31457A308E93AE0059BE34 /* Build configuration list for PBXNativeTarget "DailyPlannerWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C314577308E93AE0059BE34 /* Debug */,
+				3C314578308E93AE0059BE34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3C4D9C542F228F60006F0152 /* Build configuration list for PBXProject "dailyplanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -365,6 +566,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3C19EEB7305FF3C600454938 /* XCRemoteSwiftPackageReference "WhatsNewKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/WhatsNewKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C19EEB8305FF3C600454938 /* WhatsNewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C19EEB7305FF3C600454938 /* XCRemoteSwiftPackageReference "WhatsNewKit" */;
+			productName = WhatsNewKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3C4D9C512F228F60006F0152 /* Project object */;
 }

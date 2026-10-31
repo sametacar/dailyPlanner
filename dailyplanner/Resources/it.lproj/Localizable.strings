@@ -27,6 +27,7 @@
 /* Settings */
 "settings.title" = "Impostazioni";
 "settings.section.appearance" = "Aspetto";
+"settings.version.label" = "Versione";
 "settings.theme.label" = "Tema";
 "settings.theme.light" = "Chiaro";
 "settings.theme.dark" = "Scuro";
@@ -50,6 +51,7 @@
 "settings.language.romanian" = "Română";
 "settings.language.chinese_simplified" = "简体中文";
 "settings.language.chinese_traditional" = "繁體中文";
+"settings.language.japanese" = "日本語";
 
 /* Settings - Support Section */
 "settings.section.support" = "Supporta";
@@ -68,3 +70,30 @@
 "tips.success.title" = "Grazie! 💚";
 "tips.success.message" = "Il tuo supporto significa tutto!";
 "tips.error.title" = "Qualcosa è andato storto";
+"taskedit.title" = "Modifica attività";
+"taskedit.button.save" = "Salva";
+"taskedit.button.delete" = "Elimina attività";
+"taskresize.starttime.title" = "Ora di inizio";
+"taskresize.endtime.title" = "Ora di fine";
+"taskresize.picker.conflict" = "Questo orario si sovrappone a un'altra attività";
+"taskschedule.button.remove" = "Rimuovi attività";
+"whatsnew.title" = "Novità";
+"whatsnew.version" = "Versione %@";
+"whatsnew.button.continue" = "Continua";
+"whatsnew.1.4.feature1.title" = "Durate delle attività flessibili";
+"whatsnew.1.4.feature1.subtitle" = "Ora puoi impostare la durata delle attività in intervalli di 15, 30 e 45 minuti";
+"whatsnew.1.4.feature2.title" = "Nuovi colori per le attività";
+"whatsnew.1.4.feature2.subtitle" = "Sono state aggiunte nuove opzioni di colore per personalizzare le tue attività";
+"whatsnew.1.4.feature3.title" = "Supporto per il giapponese";
+"whatsnew.1.4.feature3.subtitle" = "L'app è ora disponibile anche in giapponese — Konnichiwa!";
+"howitworks.step1.title" = "Crea un'attività";
+"howitworks.step1.subtitle" = "Tocca l'icona del pannello per aprire l'elenco delle attività, poi aggiungi la tua prima attività con +";
+"howitworks.step2.title" = "Pianifica la tua giornata";
+"howitworks.step2.subtitle" = "Trascina un'attività dall'elenco sulla linea temporale per programmarla";
+"howitworks.step3.title" = "Regola l'orario";
+"howitworks.step3.subtitle" = "Se vuoi regolare l'orario con più precisione, trascina i bordi, oppure tocca l'orologio per scegliere l'ora esatta.";
+"howitworks.button.done" = "Inizia";
+"settings.howitworks.title" = "Come funziona";
+"howitworks.button.next" = "Avanti";
+"whatsnew.1.5.feature1.title" = "Widget per la schermata Home";
+"whatsnew.1.5.feature1.subtitle" = "Il tuo piano della giornata, direttamente nella schermata Home. Tieni premuto su un'area vuota, tocca + e cerca Daily Planner.";

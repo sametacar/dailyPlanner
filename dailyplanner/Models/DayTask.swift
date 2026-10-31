@@ -19,6 +19,8 @@ class DayTaskModel {
     var date: Date
     var startHour: Int
     var endHour: Int
+    var startMinute: Int = 0
+    var endMinute: Int = 0
 
     init(
         taskId: UUID? = nil,
@@ -28,7 +30,9 @@ class DayTaskModel {
         icon: String?,
         date: Date,
         startHour: Int,
-        endHour: Int
+        endHour: Int,
+        startMinute: Int = 0,
+        endMinute: Int = 0
     ) {
         self.id = UUID()
         self.taskId = taskId
@@ -39,10 +43,12 @@ class DayTaskModel {
         self.date = date
         self.startHour = startHour
         self.endHour = endHour
+        self.startMinute = startMinute
+        self.endMinute = endMinute
     }
 
     /// Create a DayTaskModel from a TaskModel template
-    convenience init(from task: TaskModel, date: Date, startHour: Int, endHour: Int) {
+    convenience init(from task: TaskModel, date: Date, startHour: Int, endHour: Int, startMinute: Int = 0, endMinute: Int = 0) {
         self.init(
             taskId: task.id,
             name: task.name,
@@ -51,12 +57,14 @@ class DayTaskModel {
             icon: task.icon,
             date: date,
             startHour: startHour,
-            endHour: endHour
+            endHour: endHour,
+            startMinute: startMinute,
+            endMinute: endMinute
         )
     }
 
     /// Create from TaskTransfer (for drag-drop)
-    convenience init(from transfer: TaskTransfer, date: Date, startHour: Int, endHour: Int) {
+    convenience init(from transfer: TaskTransfer, date: Date, startHour: Int, endHour: Int, startMinute: Int = 0, endMinute: Int = 0) {
         self.init(
             taskId: transfer.id,
             name: transfer.name,
@@ -65,7 +73,13 @@ class DayTaskModel {
             icon: transfer.icon,
             date: date,
             startHour: startHour,
-            endHour: endHour
+            endHour: endHour,
+            startMinute: startMinute,
+            endMinute: endMinute
         )
     }
+
+    var startTotalMinutes: Int { startHour * 60 + startMinute }
+    var endTotalMinutes: Int { endHour * 60 + endMinute }
+    var durationMinutes: Int { endTotalMinutes - startTotalMinutes }
 }
